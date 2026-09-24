@@ -1,0 +1,68 @@
+GUIA DE FOTOGRAFIAS — PLAN A MEDIDA
+====================================
+
+ESTADO ACTUAL
+-------------
+Las fotografias que ya estan en esta carpeta son OBRAS REALES de Metales
+Decorados, tomadas de sus publicaciones en Instagram (@metales_decorados01)
+y recortadas para quitar la interfaz, la fecha y cualquier dato de la app.
+
+IMPORTANTE: son capturas de pantalla, no los archivos originales.
+Instagram recomprime las imagenes, asi que se pierde nitidez. Antes de
+publicar el sitio conviene pedirle al cliente las fotos originales del
+celular y reemplazarlas con el mismo nombre de archivo.
+
+COMO REEMPLAZAR
+---------------
+Basta con copiar la foto nueva encima, con el mismo nombre. No hay que tocar
+ni una linea de codigo. Si un archivo falta, la pagina muestra un marcador
+que dice "FOTOGRAFIA PENDIENTE" con el nombre de lo que va ahi.
+
+Formato: .jpg  |  Ancho recomendado: 1600 px  |  Peso ideal: menos de 400 KB
+
+
+LO QUE FALTA
+------------
+p11-a.jpg                 PROYECTO ESPECIAL para el catalogo. Esta ficha
+                          aparece marcada como "Fotos pendientes". Al copiar el
+                          archivo con ese nombre, se completa sola. Para
+                          agregarle mas fotos, abrir js/main.js y llenar el
+                          campo "fotos" de p11.
+
+NOTA: el servicio de MOBILIARIO se retiro del sitio por falta de fotografias.
+      Si el cliente manda fotos de juegos de sala, comedor, mesas o bancos,
+      se vuelve a activar. Ver el README para los pasos.
+
+
+LO QUE YA ESTA
+--------------
+hero.jpg                  Porton con vista al valle (foto de portada)
+og.jpg                    Version para compartir el enlace (1200 x 630)
+a-medida.jpg              Baranda en proceso de instalacion (seccion "a medida")
+
+servicio-portones.jpg     servicio-puertas.jpg      servicio-rejas.jpg
+servicio-pasamanos.jpg    servicio-decoracion.jpg   servicio-laser.jpg
+
+CATALOGO
+proyecto-01-a/b.jpg       Porton de entrada en hierro forjado
+proyecto-02-a.jpg         Porton vehicular corredizo
+proyecto-03-a.jpg         Porton de dos hojas con puerta peatonal
+proyecto-04-a.jpg         Porton y rejas en hierro forjado
+proyecto-05-a.jpg         Puerta principal con diseno calado (pavo real)
+proyecto-06-a/b/c/d.jpg   Puertas principales en lamina decorada
+proyecto-07-a.jpg         Puerta principal en hierro forjado con vidrio
+proyecto-08-a.jpg         Baranda de escalera interna
+proyecto-09-a.jpg         Paneles decorativos y lamparas
+
+Para agregar, quitar o renombrar proyectos: abrir js/main.js y editar la
+lista PROYECTOS. Cada entrada define categoria, titulo, resumen y fotos.
+
+
+CONSEJOS PARA LAS FOTOS NUEVAS
+------------------------------
+- Luz de dia, sin flash directo.
+- Para cada proyecto: 1 foto general + 1 o 2 de detalle (forja, soldadura,
+  acabado, herrajes) + 1 del conjunto instalado si se puede.
+- Horizontal para el hero; vertical funciona bien para pasamanos y puertas.
+- Evitar fotos con personas identificables sin su permiso.
+- No usar fotos descargadas de internet ni de otras empresas.

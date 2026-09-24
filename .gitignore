@@ -1,0 +1,10 @@
+.claude/
+.env
+.env.local
+*.pem
+service-account*.json
+node_modules/
+dist/
+build/
+.DS_Store
+Thumbs.db

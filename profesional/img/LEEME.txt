@@ -1,0 +1,59 @@
+GUIA DE FOTOGRAFIAS — PLAN PROFESIONAL
+=======================================
+
+ESTADO ACTUAL
+-------------
+Las fotografias que ya estan en esta carpeta son OBRAS REALES de Metales
+Decorados, tomadas de sus publicaciones en Instagram (@metales_decorados01)
+y recortadas para quitar la interfaz, la fecha y cualquier dato de la app.
+
+IMPORTANTE: son capturas de pantalla, no los archivos originales.
+Instagram recomprime las imagenes, asi que se pierde nitidez. Antes de
+publicar el sitio conviene pedirle al cliente las fotos originales del
+celular y reemplazarlas con el mismo nombre de archivo.
+
+COMO REEMPLAZAR
+---------------
+Basta con copiar la foto nueva encima, con el mismo nombre. No hay que tocar
+ni una linea de codigo. Si un archivo falta, la pagina muestra un marcador
+que dice "FOTOGRAFIA PENDIENTE" con el nombre de lo que va ahi.
+
+Formato: .jpg  |  Ancho recomendado: 1600 px  |  Peso ideal: menos de 400 KB
+
+
+ARCHIVOS QUE FALTAN
+-------------------
+(nada)                    El servicio de MOBILIARIO se retiro del sitio por
+                          falta de fotografias. Si el cliente manda fotos de
+                          juegos de sala, comedor, mesas o bancos, se vuelve a
+                          activar. Ver el README para los pasos.
+
+
+ARCHIVOS QUE YA ESTAN
+---------------------
+hero.jpg                  Porton con vista al valle (foto de portada)
+og.jpg                    Version para compartir el enlace (1200 x 630)
+
+servicio-portones.jpg     Porton vehicular corredizo
+servicio-puertas.jpg      Puerta principal con pavo real calado
+servicio-rejas.jpg        Porton y rejas en hierro forjado
+servicio-pasamanos.jpg    Baranda de escalera interna
+servicio-decoracion.jpg   Paneles decorativos y lamparas del taller
+servicio-laser.jpg        Puerta con greca (solo se ve si se activa el
+                          bloque de corte laser)
+
+galeria-01.jpg  ...  galeria-13.jpg
+                          Galeria del portafolio. El Plan Profesional admite
+                          hasta 25 fotografias. Para agregar mas: abrir
+                          js/main.js y sumar lineas a la lista GALERIA.
+
+
+CONSEJOS PARA LAS FOTOS NUEVAS
+------------------------------
+- Luz de dia, sin flash directo.
+- La pieza completa y centrada; una segunda foto del detalle de la soldadura
+  o del acabado suma mucho.
+- Horizontal para el hero y para la galeria ancha; vertical funciona bien
+  para pasamanos y muebles altos.
+- Evitar fotos con personas identificables sin su permiso.
+- No usar fotos descargadas de internet ni de otras empresas.

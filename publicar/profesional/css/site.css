@@ -1,0 +1,146 @@
+/* ==========================================================================
+   METALES DECORADOS — Plan Profesional (estilos propios de esta version)
+   ========================================================================== */
+
+/* Tarjeta destacada "proyectos a medida" */
+.card--feature{
+  background:
+    radial-gradient(130% 130% at 100% 0%, rgba(200,160,74,.16), transparent 60%),
+    linear-gradient(160deg,var(--panel),#0f1114);
+  border-color:rgba(200,160,74,.32);
+  justify-content:center;
+}
+.card--feature .card__body{ padding:34px 30px; gap:14px; }
+
+/* ---------- Galeria del portafolio ---------- */
+.gal{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:200px; gap:14px;
+}
+@media (max-width:1000px){ .gal{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:700px){ .gal{ grid-template-columns:repeat(2,1fr); grid-auto-rows:150px; } }
+
+.gal__i{
+  position:relative; overflow:hidden; border-radius:var(--radius);
+  border:1px solid var(--line); background:var(--panel-2);
+  /* margin:0 anula el margen por defecto de <figure> (40px a los lados) */
+  margin:0; padding:0; display:block; width:100%; height:100%;
+  transition:border-color .35s, transform .5s var(--ease);
+}
+.gal__i:hover{ border-color:rgba(200,160,74,.5); transform:translateY(-3px); }
+.gal__i img{ width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease); }
+.gal__i:hover img{ transform:scale(1.07); }
+.gal__i--w{ grid-column:span 2; }
+.gal__i--h{ grid-row:span 2; }
+.gal__i figcaption{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  padding:26px 16px 14px; font-size:12.5px; color:var(--tx);
+  background:linear-gradient(transparent,rgba(10,11,13,.92));
+  opacity:0; transform:translateY(8px); transition:.35s var(--ease); text-align:left;
+}
+.gal__i:hover figcaption{ opacity:1; transform:none; }
+
+/* Visor */
+.lb{
+  position:fixed; inset:0; z-index:110; background:rgba(8,9,10,.95);
+  backdrop-filter:blur(10px); display:grid; place-items:center; padding:5vw;
+}
+.lb__box{ max-width:1000px; width:100%; }
+.lb__box .ph{ position:relative; min-height:56vh; border-radius:var(--radius); }
+.lb__box img{ width:100%; max-height:84vh; object-fit:contain; border-radius:var(--radius); }
+.lb__cap{ text-align:center; color:var(--tx-2); font-size:14px; margin-top:16px; }
+.lb__x{
+  position:absolute; top:22px; right:26px; background:none; border:0;
+  font-size:36px; line-height:1; color:var(--tx-2);
+}
+.lb__x:hover{ color:var(--brass); }
+
+/* ---------- Testimonios ---------- */
+.quote{
+  border:1px solid var(--line); border-radius:var(--radius-lg); padding:30px;
+  background:var(--panel); display:flex; flex-direction:column; gap:14px;
+}
+.quote .stars{ color:var(--brass); letter-spacing:3px; font-size:14px; }
+.quote p{ margin:0; color:var(--tx-2); font-size:15px; flex:1; }
+.quote footer{ font-size:13px; color:var(--tx-3); border-top:1px solid var(--line-soft); padding-top:14px; }
+
+/* ---------- FAQ ---------- */
+.faq{ max-width:860px; border-top:1px solid var(--line); }
+.faq details{ border-bottom:1px solid var(--line); }
+.faq summary{
+  list-style:none; cursor:pointer; padding:24px 44px 24px 0; position:relative;
+  font-family:var(--ff-display); font-size:1.06rem; font-weight:500;
+  transition:color .25s;
+}
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary:hover{ color:var(--brass); }
+.faq summary::after{
+  content:''; position:absolute; right:8px; top:50%; width:11px; height:11px;
+  border-right:1.5px solid var(--brass); border-bottom:1.5px solid var(--brass);
+  transform:translateY(-70%) rotate(45deg); transition:transform .3s var(--ease);
+}
+.faq details[open] summary::after{ transform:translateY(-30%) rotate(-135deg); }
+.faq details > div{ padding:0 40px 26px 0; }
+.faq p{ margin:0; color:var(--tx-2); font-size:15px; }
+
+/* ---------- Cotizador ---------- */
+.quote-layout{ display:grid; grid-template-columns:1fr 1.05fr; gap:64px; align-items:start; }
+@media (max-width:900px){ .quote-layout{ grid-template-columns:1fr; gap:44px; } }
+
+.steps{ list-style:none; margin:30px 0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.steps li{ color:var(--tx-2); font-size:15px; padding-left:2px; }
+.steps b{ color:var(--brass); font-family:var(--ff-display); margin-right:8px; }
+
+.quote-form{
+  border:1px solid var(--line); border-radius:var(--radius-lg); padding:36px;
+  background:linear-gradient(170deg,var(--panel),#101216); position:relative;
+}
+@media (max-width:520px){ .quote-form{ padding:24px; } }
+
+.check{ display:flex; align-items:flex-start; gap:10px; font-weight:400 !important; color:var(--tx-2); cursor:pointer; }
+.check input{ margin-top:3px; accent-color:var(--brass); width:16px; height:16px; }
+
+.form-done{
+  position:absolute; inset:0; background:linear-gradient(170deg,var(--panel),#101216);
+  border-radius:var(--radius-lg); padding:38px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; gap:14px; z-index:3;
+}
+.form-done h3{ font-size:1.4rem; }
+.form-done p{ color:var(--tx-2); font-size:15px; margin:0 0 10px; max-width:34ch; }
+
+.input.is-bad, .select.is-bad, .textarea.is-bad{ border-color:#c9564a; }
+
+/* ---------- Contacto ---------- */
+.contact{ display:grid; grid-template-columns:1fr 1.15fr; gap:34px; }
+@media (max-width:900px){ .contact{ grid-template-columns:1fr; } }
+.contact__card{
+  border:1px solid var(--line); border-radius:var(--radius-lg); padding:38px;
+  background:var(--panel);
+}
+.contact__list{ list-style:none; margin:26px 0 30px; padding:0; display:flex; flex-direction:column; gap:20px; }
+.contact__list li{ display:flex; gap:14px; align-items:flex-start; font-size:15px; color:var(--tx-2); }
+.contact__list svg{ color:var(--brass); flex:none; margin-top:3px; }
+.contact__list a:hover{ color:var(--brass); }
+.contact__list .is-pending{ color:var(--tx-3); font-size:14px; }
+.contact__btns{ display:flex; gap:12px; flex-wrap:wrap; }
+.contact__map{
+  border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden;
+  min-height:340px; position:relative;
+}
+.contact__map iframe{ width:100%; height:100%; min-height:340px; border:0; filter:grayscale(1) invert(.9) hue-rotate(180deg); }
+
+/* ---------- Hero sin fotografia: acabado de acero, no caja de marcador ----------
+   Mientras no exista img/hero.jpg el fondo se ve como una superficie de metal
+   oscuro y el aviso de foto pendiente queda discreto en una esquina.
+   Al subir la fotografia real, esto deja de verse automaticamente. */
+.hero__bg .ph{
+  border:0;
+  background:
+    radial-gradient(120% 90% at 20% 15%, rgba(200,160,74,.10), transparent 55%),
+    repeating-linear-gradient(101deg, #16181c 0 3px, #131518 3px 7px),
+    linear-gradient(160deg,#1c1f24,#0c0d0f);
+  align-items:flex-end; justify-content:flex-end; padding:34px 30px; gap:3px;
+}
+.hero__bg .ph svg{ display:none; }
+.hero__bg .ph b{ font-size:10px; letter-spacing:.2em; opacity:.75; }
+.hero__bg .ph span{ font-size:11px; text-align:right; max-width:24ch; opacity:.7; }
