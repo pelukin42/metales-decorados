@@ -1,14 +1,19 @@
 [build]
-  publish = "."
+  publish = "amedida"
   command = ""
 
 [[redirects]]
-  from = "/amedida*"
-  to = "/amedida/index.html"
-  status = 200
+  from = "/amedida"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/amedida/*"
+  to = "/:splat"
+  status = 301
 
 [[headers]]
-  for = "/"
+  for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
