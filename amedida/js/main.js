@@ -484,8 +484,6 @@ const I18N = {
     resEyebrow:'Reviews', resH:'Reviews on Google',
     resScore:'No Google Business<br>profile yet',
     resTx:'When the workshop has its Google Business profile, this block will show its real rating and reviews, with a button to leave a review. <b>No reviews written by third parties or fictitious testimonials are added.</b>',
-    resDevnote:'<b>To activate ·</b> Metales Decorados does not have a Google Business profile yet. Once it is created and verified, this block will be filled in with the real rating and link. <span class="pend">PENDING — TO CONFIRM WITH CLIENT</span>',
-    resBtn:'View Google profile', resLinkPend:'link pending',
 
     /* Preguntas frecuentes */
     faqLede:'If your question isn’t here, the virtual assistant in the corner can help, or connect you directly to WhatsApp.',
