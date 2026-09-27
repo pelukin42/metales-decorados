@@ -71,9 +71,10 @@ function initPlaceholders(){
 
     const box = document.createElement('div');
     box.className = 'ph';
+    const esEn = (typeof idioma !== 'undefined' && idioma === 'en');
     box.innerHTML = PH_ICON +
-      '<b>Fotografía pendiente</b>' +
-      '<span>' + (img.dataset.ph || 'Imagen del proyecto') + '</span>';
+      '<b>' + (esEn ? 'Photo pending' : 'Fotografía pendiente') + '</b>' +
+      '<span>' + (img.dataset.ph || (esEn ? 'Project photo' : 'Imagen del proyecto')) + '</span>';
     img.parentNode.insertBefore(box, img);
 
     const cargo = function(){

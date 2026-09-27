@@ -107,7 +107,7 @@
 <!-- =========================== HERO =========================== -->
 <section class="hero" id="inicio">
   <div class="hero__bg">
-    <img src="img/hero.jpg" alt="Proyecto en metal fabricado por Metales Decorados" data-ph="Fotografía principal — proyecto destacado, horizontal">
+    <img src="img/hero.jpg" alt="Proyecto en metal fabricado por Metales Decorados" data-ph="Fotografía principal — proyecto destacado, horizontal" data-i18n-ph="heroPh">
   </div>
   <div class="wrap hero__in">
     <p class="eyebrow rv" data-i18n="heroEyebrow">Taller de fabricación en metal · Guadalupe, Goicoechea</p>
@@ -129,10 +129,10 @@
 <section class="strip">
   <div class="wrap">
     <div class="strip__grid">
-      <div class="strip__i"><b>Guadalupe, Goicoechea</b><span>San José, Costa Rica</span></div>
-      <div class="strip__i"><b>Hierro forjado y aluminio</b><span>Materiales que trabajamos</span></div>
-      <div class="strip__i"><b>Cotización por WhatsApp</b><span>+506 8850-9207</span></div>
-      <div class="strip__i"><b>Fabricación a medida</b><span>Cada proyecto se cotiza según su diseño</span></div>
+      <div class="strip__i"><b data-i18n="strip1b">Guadalupe, Goicoechea</b><span data-i18n="strip1s">San José, Costa Rica</span></div>
+      <div class="strip__i"><b data-i18n="strip2b">Hierro forjado y aluminio</b><span data-i18n="strip2s">Materiales que trabajamos</span></div>
+      <div class="strip__i"><b data-i18n="strip3b">Cotización por WhatsApp</b><span data-i18n="strip3s">+506 8850-9207</span></div>
+      <div class="strip__i"><b data-i18n="strip4b">Fabricación a medida</b><span data-i18n="strip4s">Cada proyecto se cotiza según su diseño</span></div>
     </div>
   </div>
 </section>
@@ -160,12 +160,12 @@
          ========================================================== -->
     <div class="laser rv" id="bloque-laser" hidden>
       <div class="laser__tx">
-        <p class="eyebrow">Corte láser</p>
-        <h3 class="h-md">Corte láser de fibra</h3>
-        <p class="muted"><span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span> Materiales, espesores, tamaño máximo de lámina y si el servicio se ofrece a terceros.</p>
-        <a class="btn btn--primary btn--sm" data-wa="Hola, quisiera consultar por el servicio de corte láser.">Consultar</a>
+        <p class="eyebrow" data-i18n="laserEyebrow">Corte láser</p>
+        <h3 class="h-md" data-i18n="laserH">Corte láser de fibra</h3>
+        <p class="muted"><span class="pend" data-i18n="pendCliente">PENDIENTE CONFIRMAR CON CLIENTE</span> <span data-i18n="laserMuted">Materiales, espesores, tamaño máximo de lámina y si el servicio se ofrece a terceros.</span></p>
+        <a class="btn btn--primary btn--sm" data-wa="Hola, quisiera consultar por el servicio de corte láser." data-i18n="laserBtn">Consultar</a>
       </div>
-      <div class="laser__media"><img src="img/servicio-laser.jpg" alt="Corte láser" data-ph="Pieza cortada en láser"></div>
+      <div class="laser__media"><img src="img/servicio-laser.jpg" alt="Corte láser" data-ph="Pieza cortada en láser" data-i18n-ph="laserPh"></div>
     </div>
 
   </div>
@@ -183,7 +183,7 @@
 
     <div class="filtros rv" id="filtros" role="tablist"><!-- se genera desde js/main.js --></div>
     <div class="cat" id="cat"><!-- se genera desde js/main.js --></div>
-    <p class="cat__vacio" id="cat-vacio" hidden>No hay proyectos en esta categoría todavía.</p>
+    <p class="cat__vacio" id="cat-vacio" hidden data-i18n="catVacio">No hay proyectos en esta categoría todavía.</p>
 
     <div class="cta-band rv" style="margin-top:60px">
       <div>
@@ -195,7 +195,7 @@
         <!-- Catalogo descargable: se genera con herramientas/generar-pdf.py -->
         <a class="btn btn--ghost" href="Catalogo-Metales-Decorados.pdf" download>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg>
-          Descargar catálogo
+          <span data-i18n="descargarCatalogo">Descargar catálogo</span>
         </a>
         <a class="btn btn--wa" data-wa="Hola, estuve viendo el catálogo de proyectos en su página web y me gustaría cotizar un trabajo similar.">WhatsApp</a>
       </div>
@@ -209,21 +209,21 @@
     <div class="medida">
       <div class="medida__tx rv">
         <div class="rule"></div>
-        <p class="eyebrow">Proyectos a medida</p>
-        <h2 class="h-lg">¿Tenés una idea en mente?</h2>
-        <p class="lede" style="margin-top:16px">No hace falta que sepas de metal, ni que tengas un plano. Con una fotografía del espacio, una imagen de referencia o una descripción de lo que imaginás, ya se puede empezar a trabajar en una cotización.</p>
+        <p class="eyebrow" data-i18n="medidaEyebrow">Proyectos a medida</p>
+        <h2 class="h-lg" data-i18n="medidaH">¿Tenés una idea en mente?</h2>
+        <p class="lede" style="margin-top:16px" data-i18n="medidaP">No hace falta que sepas de metal, ni que tengas un plano. Con una fotografía del espacio, una imagen de referencia o una descripción de lo que imaginás, ya se puede empezar a trabajar en una cotización.</p>
         <ul class="steps" style="margin-top:26px">
-          <li><b>1.</b> Contanos qué necesitás y dónde va.</li>
-          <li><b>2.</b> Enviás fotos o referencias, si las tenés.</li>
-          <li><b>3.</b> Metales Decorados te responde con la cotización.</li>
+          <li><b>1.</b> <span data-i18n="medidaStep1">Contanos qué necesitás y dónde va.</span></li>
+          <li><b>2.</b> <span data-i18n="medidaStep2">Enviás fotos o referencias, si las tenés.</span></li>
+          <li><b>3.</b> <span data-i18n="medidaStep3">Metales Decorados te responde con la cotización.</span></li>
         </ul>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
-          <a class="btn btn--primary" href="#cotizar">Cotizar mi proyecto</a>
-          <a class="btn btn--ghost" data-wa="Hola, tengo una idea de un proyecto en metal a medida y quisiera contarles de qué se trata para una cotización.">Contarlo por WhatsApp</a>
+          <a class="btn btn--primary" href="#cotizar" data-i18n="cta1">Cotizar mi proyecto</a>
+          <a class="btn btn--ghost" data-wa="Hola, tengo una idea de un proyecto en metal a medida y quisiera contarles de qué se trata para una cotización." data-i18n="medidaWa">Contarlo por WhatsApp</a>
         </div>
       </div>
       <div class="medida__media rv" data-delay="80">
-        <img src="img/a-medida.jpg" alt="Proceso de fabricación en el taller" data-ph="Foto del taller o del proceso de fabricación — vertical">
+        <img src="img/a-medida.jpg" alt="Proceso de fabricación en el taller" data-ph="Foto del taller o del proceso de fabricación — vertical" data-i18n-ph="medidaPh">
       </div>
     </div>
   </div>
@@ -234,8 +234,8 @@
   <div class="wrap">
     <div class="sec-head rv">
       <div class="rule"></div>
-      <p class="eyebrow">Reseñas</p>
-      <h2 class="h-lg">Reseñas en Google</h2>
+      <p class="eyebrow" data-i18n="resEyebrow">Reseñas</p>
+      <h2 class="h-lg" data-i18n="resH">Reseñas en Google</h2>
     </div>
 
     <!-- Sin calificacion: el negocio todavia no tiene perfil de Google Business.
@@ -243,18 +243,18 @@
     <div class="google rv">
       <div class="google__score">
         <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="display:block;margin:0 auto 12px;color:var(--brass)"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-        <span>Todavía sin perfil<br>de Google Business</span>
+        <span data-i18n="resScore">Todavía sin perfil<br>de Google Business</span>
       </div>
       <div class="google__tx">
-        <p>Cuando el taller tenga su perfil de Google Business, este bloque muestra su calificación y
+        <p data-i18n="resTx">Cuando el taller tenga su perfil de Google Business, este bloque muestra su calificación y
            sus reseñas reales, con un botón para dejar una reseña.
            <b>No se agregan reseñas escritas por terceros ni testimonios ficticios.</b></p>
-        <div class="devnote" style="margin-top:14px">
+        <div class="devnote" style="margin-top:14px" data-i18n="resDevnote">
           <b>Para activar ·</b> Metales Decorados todavía no tiene perfil de Google Business. Al crearlo
           y verificarlo, este bloque se completa con la calificación y el enlace reales.
           <span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span>
         </div>
-        <a class="btn btn--ghost btn--sm" id="btn-google" href="#resenas" aria-disabled="true">Ver perfil en Google <span class="pend" style="margin-left:6px">enlace pendiente</span></a>
+        <a class="btn btn--ghost btn--sm" id="btn-google" href="#resenas" aria-disabled="true"><span data-i18n="resBtn">Ver perfil en Google</span> <span class="pend" style="margin-left:6px" data-i18n="resLinkPend">enlace pendiente</span></a>
       </div>
     </div>
   </div>
@@ -267,49 +267,49 @@
       <div class="rule"></div>
       <p class="eyebrow" data-i18n="fq0">Preguntas frecuentes</p>
       <h2 class="h-lg" data-i18n="fq1">Antes de escribirnos</h2>
-      <p class="lede" style="margin-top:16px">Si tu pregunta no está acá, el asistente virtual de la esquina puede ayudarte o pasarte directo a WhatsApp.</p>
+      <p class="lede" style="margin-top:16px" data-i18n="faqLede">Si tu pregunta no está acá, el asistente virtual de la esquina puede ayudarte o pasarte directo a WhatsApp.</p>
     </div>
 
     <div class="faq rv">
       <details open>
-        <summary>¿Realizan trabajos personalizados?</summary>
-        <div><p>Sí. La mayor parte del trabajo se fabrica a la medida, a partir del espacio, las medidas y el diseño que necesita cada cliente.</p></div>
+        <summary data-i18n="faqQ1">¿Realizan trabajos personalizados?</summary>
+        <div><p data-i18n="faqA1">Sí. La mayor parte del trabajo se fabrica a la medida, a partir del espacio, las medidas y el diseño que necesita cada cliente.</p></div>
       </details>
       <details>
-        <summary>¿Cómo puedo solicitar una cotización?</summary>
-        <div><p>Podés completar el cotizador de esta página, hablar con el asistente virtual o escribir directamente por WhatsApp al <span data-md="telefono">+506 8850-9207</span>.</p></div>
+        <summary data-i18n="faqQ2">¿Cómo puedo solicitar una cotización?</summary>
+        <div><p data-i18n="faqA2">Podés completar el cotizador de esta página, hablar con el asistente virtual o escribir directamente por WhatsApp al <span data-md="telefono">+506 8850-9207</span>.</p></div>
       </details>
       <details>
-        <summary>¿Qué información necesitan para cotizar?</summary>
-        <div><p>Tipo de trabajo, zona donde se instalaría, medidas aproximadas (aunque sean estimadas) y, si existe, una fotografía del espacio o una imagen de referencia del estilo deseado.</p></div>
+        <summary data-i18n="faqQ3">¿Qué información necesitan para cotizar?</summary>
+        <div><p data-i18n="faqA3">Tipo de trabajo, zona donde se instalaría, medidas aproximadas (aunque sean estimadas) y, si existe, una fotografía del espacio o una imagen de referencia del estilo deseado.</p></div>
       </details>
       <details>
-        <summary>¿Puedo enviar una fotografía de referencia?</summary>
-        <div><p>Sí, y es la forma más rápida de avanzar. Las fotos se adjuntan directamente en el chat de WhatsApp.</p></div>
+        <summary data-i18n="faqQ4">¿Puedo enviar una fotografía de referencia?</summary>
+        <div><p data-i18n="faqA4">Sí, y es la forma más rápida de avanzar. Las fotos se adjuntan directamente en el chat de WhatsApp.</p></div>
       </details>
       <details>
-        <summary>¿Qué materiales trabajan?</summary>
-        <div><p>Según la información pública del negocio, se trabaja principalmente <b>hierro forjado</b> y <b>aluminio</b>. <span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span> el detalle completo de materiales y acabados.</p></div>
+        <summary data-i18n="faqQ5">¿Qué materiales trabajan?</summary>
+        <div><p data-i18n="faqA5">Según la información pública del negocio, se trabaja principalmente <b>hierro forjado</b> y <b>aluminio</b>. <span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span> el detalle completo de materiales y acabados.</p></div>
       </details>
       <details>
-        <summary>¿En qué zonas trabajan?</summary>
-        <div><p>El taller está en Guadalupe, Goicoechea, San José. <span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span> la cobertura exacta de zonas.</p></div>
+        <summary data-i18n="faqQ6">¿En qué zonas trabajan?</summary>
+        <div><p data-i18n="faqA6">El taller está en Guadalupe, Goicoechea, San José. <span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span> la cobertura exacta de zonas.</p></div>
       </details>
       <details>
-        <summary>¿Realizan instalación?</summary>
-        <div><p><span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span></p></div>
+        <summary data-i18n="faqQ7">¿Realizan instalación?</summary>
+        <div><p><span class="pend" data-i18n="pendCliente">PENDIENTE CONFIRMAR CON CLIENTE</span></p></div>
       </details>
       <details>
-        <summary>¿Cuánto tarda un proyecto?</summary>
-        <div><p><span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span> Los tiempos dependen del tipo de trabajo y no se publican hasta confirmarlos con el taller.</p></div>
+        <summary data-i18n="faqQ8">¿Cuánto tarda un proyecto?</summary>
+        <div><p data-i18n="faqA8"><span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span> Los tiempos dependen del tipo de trabajo y no se publican hasta confirmarlos con el taller.</p></div>
       </details>
       <details>
-        <summary>¿Ofrecen garantía?</summary>
-        <div><p><span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span></p></div>
+        <summary data-i18n="faqQ9">¿Ofrecen garantía?</summary>
+        <div><p><span class="pend" data-i18n="pendCliente">PENDIENTE CONFIRMAR CON CLIENTE</span></p></div>
       </details>
       <details>
-        <summary>¿Cuáles son los métodos de pago?</summary>
-        <div><p><span class="pend">PENDIENTE CONFIRMAR CON CLIENTE</span></p></div>
+        <summary data-i18n="faqQ10">¿Cuáles son los métodos de pago?</summary>
+        <div><p><span class="pend" data-i18n="pendCliente">PENDIENTE CONFIRMAR CON CLIENTE</span></p></div>
       </details>
     </div>
   </div>
@@ -331,7 +331,7 @@
       <form id="wz-form" novalidate><!-- se genera desde js/cotizador.js --></form>
     </div>
 
-    <p class="hint" style="text-align:center;margin-top:22px;max-width:56ch;margin-left:auto;margin-right:auto">
+    <p class="hint" style="text-align:center;margin-top:22px;max-width:56ch;margin-left:auto;margin-right:auto" data-i18n="czHint">
       Este cotizador no calcula precios ni confirma disponibilidad. Reúne la información del proyecto
       para que Metales Decorados prepare la cotización.
     </p>
@@ -353,7 +353,7 @@
         <ul class="contact__list">
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-            <span>Guadalupe, Goicoechea<br>San José, Costa Rica</span>
+            <span data-i18n="contactAddr">Guadalupe, Goicoechea<br>San José, Costa Rica</span>
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5c0-.6.4-1 1-1h3l2 5-2 1a12 12 0 006 6l1-2 5 2v3c0 .6-.4 1-1 1A16 16 0 014 5z"/></svg>
@@ -365,12 +365,12 @@
           </li>
           <li class="is-pending">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <span><span class="pend">PENDIENTE CONFIRMAR</span><br>Horario de atención, dirección exacta y correo electrónico</span>
+            <span><span class="pend" data-i18n="contactPend">PENDIENTE CONFIRMAR</span><br><span data-i18n="contactPendTx">Horario de atención, dirección exacta y correo electrónico</span></span>
           </li>
         </ul>
 
         <div class="contact__btns">
-          <a class="btn btn--primary" href="tel:+50688509207">Llamar ahora</a>
+          <a class="btn btn--primary" href="tel:+50688509207" data-i18n="contactCall">Llamar ahora</a>
           <a class="btn btn--wa" data-wa="Hola, buenos días. Los contacto desde la página web de Metales Decorados para consultar por un proyecto.">WhatsApp</a>
         </div>
       </div>
@@ -378,8 +378,8 @@
       <div class="contact__map rv" data-delay="80">
         <div class="ph" style="position:relative">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-          <b>Mapa pendiente</b>
-          <span>Se inserta el mapa de Google al confirmar la dirección exacta del taller.</span>
+          <b data-i18n="contactMapH">Mapa pendiente</b>
+          <span data-i18n="contactMapTx">Se inserta el mapa de Google al confirmar la dirección exacta del taller.</span>
         </div>
       </div>
     </div>
@@ -395,31 +395,30 @@
           <span class="brand__mark"><span>MD</span></span>
           <span class="brand__tx"><b>Metales Decorados</b><small>Guadalupe · Costa Rica</small></span>
         </a>
-        <p class="muted" style="font-size:14.5px;max-width:38ch">Fabricación de portones, puertas, rejas, barandas y decoración en metal, hecha a la medida de cada proyecto.</p>
+        <p class="muted" style="font-size:14.5px;max-width:38ch" data-i18n="ftrDesc">Fabricación de portones, puertas, rejas, barandas y decoración en metal, hecha a la medida de cada proyecto.</p>
       </div>
       <div>
-        <h4>Servicios</h4>
+        <h4 data-i18n="ftrServicios">Servicios</h4>
         <ul>
-          <li><a href="#catalogo" data-cat="Portones">Portones</a></li>
-          <li><a href="#catalogo" data-cat="Puertas">Puertas principales</a></li>
-          <li><a href="#catalogo" data-cat="Rejas">Rejas</a></li>
-          <li><a href="#catalogo" data-cat="Barandas">Barandas</a></li>
-          <li><a href="#catalogo" data-cat="Decoración">Decoración en metal</a></li>
+          <li><a href="#catalogo" data-cat="Portones" data-i18n="ftrPortones">Portones</a></li>
+          <li><a href="#catalogo" data-cat="Puertas" data-i18n="ftrPuertas">Puertas principales</a></li>
+          <li><a href="#catalogo" data-cat="Rejas" data-i18n="ftrRejas">Rejas</a></li>
+          <li><a href="#catalogo" data-cat="Barandas" data-i18n="ftrBarandas">Barandas</a></li>
+          <li><a href="#catalogo" data-cat="Decoración" data-i18n="ftrDecoracion">Decoración en metal</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contacto</h4>
+        <h4 data-i18n="ftrContacto">Contacto</h4>
         <ul>
           <li><a href="tel:+50688509207">+506 8850-9207</a></li>
           <li><a data-wa="Hola, los contacto desde la página web de Metales Decorados.">WhatsApp</a></li>
           <li><a href="https://www.instagram.com/metales_decorados01/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#cotizar">Solicitar cotización</a></li>
+          <li><a href="#cotizar" data-i18n="ftrCotizar">Solicitar cotización</a></li>
         </ul>
       </div>
     </div>
     <div class="ftr__bot">
-      <span>&copy; <span data-year>2026</span> Metales Decorados · Guadalupe, Goicoechea, San José.</span>
-      <span>Propuesta — Plan Premium</span>
+      <span>&copy; <span data-year>2026</span> <span data-i18n="ftrCopy">Metales Decorados · Guadalupe, Goicoechea, San José.</span></span>
     </div>
   </div>
 </footer>
@@ -443,9 +442,9 @@
   </div>
 </div>
 
-<script src="js/core.js"></script>
-<script src="js/main.js"></script>
-<script src="js/cotizador.js"></script>
-<script src="js/chatbot.js"></script>
+<script src="js/core.js?v=i18n3"></script>
+<script src="js/main.js?v=i18n3"></script>
+<script src="js/cotizador.js?v=i18n3"></script>
+<script src="js/chatbot.js?v=i18n3"></script>
 </body>
 </html>
