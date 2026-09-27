@@ -147,6 +147,41 @@ const PROYECTOS = [
     tipo:'Piezas decorativas', material:'PENDIENTE', ubicacion:'Taller, Guadalupe',
     fotos:['proyecto-09-a.jpg'] },
 
+  { id:'p10', cat:'Rejas',      titulo:'Cerramiento con guardas rectas y remate de lanza',
+    resumen:'Reja de cerramiento en hierro con guardas rectas y remate de lanza sobre pared de bloque.',
+    tipo:'Fabricación a medida', material:'Hierro', ubicacion:'PENDIENTE',
+    fotos:['proyecto-10-a.jpg'] },
+
+  { id:'p12', cat:'Portones',   titulo:'Portón con cenefa geométrica calada',
+    resumen:'Portón de dos hojas con panel calado de diseño geométrico y floral en dos ubicaciones distintas.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-12-a.jpg','proyecto-12-b.jpg'] },
+
+  { id:'p13', cat:'Puertas',    titulo:'Puerta doble con diseño floral calado y vidrio',
+    resumen:'Puerta doble de acceso con paneles laterales, diseño floral calado y vidrio esmerilado.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-13-a.jpg'] },
+
+  { id:'p14', cat:'Pasamanos',  titulo:'Baranda con cenefa circular geométrica',
+    resumen:'Baranda de mezanine con panel calado de círculos entrelazados, en interior residencial.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-14-a.jpg'] },
+
+  { id:'p15', cat:'Portones',   titulo:'Portón con hojas de monstera caladas',
+    resumen:'Portón corredizo con panel calado de hojas de monstera, instalado en dos proyectos distintos.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-15-a.jpg','proyecto-15-b.jpg'] },
+
+  { id:'p16', cat:'Rejas',      titulo:'Reja de ventana con guardas y detalle central',
+    resumen:'Reja de ventana con guardas torneadas y motivo calado central, sobre marco curvo.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-16-a.jpg'] },
+
+  { id:'p17', cat:'Pasamanos',  titulo:'Baranda de escalera con vista de conjunto',
+    resumen:'Baranda de escalera curva en forja, con remates ornamentales en cada tramo.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-17-a.jpg'] },
+
   /* Categoria confirmada por el negocio, pendiente de fotografia.
      Se deja visible para mostrar donde entran las fotos que falten. */
   { id:'p11', cat:'Proyectos especiales', titulo:'Proyecto personalizado',

@@ -3,12 +3,15 @@
 Propuesta web para **Metales Decorados** (Guadalupe, Goicoechea, San José, Costa Rica).
 Taller de hierro forjado y corte CNC láser.
 
-Dos demos completas: `profesional/` (una página) y `amedida/` (multi-sección con
-catálogo, cotizador y asistente). `index.html` en la raíz es la portada que las compara.
+El sitio en producción es un único plan: `amedida/` (multi-sección con catálogo, cotizador y
+asistente). `index.html` en la raíz solo redirige a `amedida/index.html`. La demo `profesional/`
+se eliminó del repo: ya no se mantiene ni se compara.
 
-`amedida/` es el **Plan Premium**: "A Medida" ya no existe como plan. Los planes vigentes son
-Esencial, Profesional, Premium y Personalizado (landing de Axel Sites). Un sitio sin base de datos
-no lleva la mensualidad de $60. La carpeta conserva el nombre `amedida/` para no romper enlaces.
+`amedida/` es el **Plan Premium**: "A Medida" ya no existe como plan. Los planes vigentes de
+Axel Sites son Esencial, Profesional, Premium y Personalizado. Un sitio sin base de datos no
+lleva la mensualidad de $60. La carpeta conserva el nombre `amedida/` para no romper enlaces.
+
+Dominio comprado por el cliente: **metalesdecorados.com** (canonical ya actualizado).
 
 Para el método completo de construcción, usar el skill **`nuevo-cliente`**.
 
@@ -30,8 +33,8 @@ de Instagram recortada. Nunca bancos de imágenes ni fotos de otra empresa.
 `assets/core.css` y `assets/core.js` son la fuente. Al editarlos, re-copiar:
 
 ```bash
-cp assets/core.css profesional/css/styles.css && cp assets/core.css amedida/css/styles.css
-cp assets/core.js profesional/js/core.js && cp assets/core.js amedida/js/core.js
+cp assets/core.css amedida/css/styles.css
+cp assets/core.js amedida/js/core.js
 ```
 
 Todos los datos del negocio viven en el objeto `MD` de `assets/core.js`. Nada de
@@ -49,7 +52,7 @@ dibuja **antes** y se retira al cargar la imagen — ese orden es deliberado, po
 `loading="lazy"` el evento `error` puede no dispararse nunca.
 
 Al copiar una foto con el nombre exacto en `img/`, aparece sola. Los nombres esperados
-están en `profesional/img/LEEME.txt` y `amedida/img/LEEME.txt`.
+están en `amedida/img/LEEME.txt`.
 
 Falta pedir los originales del celular: las actuales vienen recomprimidas por Instagram.
 
@@ -57,7 +60,7 @@ Falta pedir los originales del celular: las actuales vienen recomprimidas por In
 
 | Bandera | Estado | Dónde |
 |---|---|---|
-| Corte láser / CNC | `MD_LASER = false` | `amedida/js/main.js` ~línea 13; en Profesional, el atributo `hidden` de `#card-laser` |
+| Corte láser / CNC | `MD_LASER = false` | `amedida/js/main.js` ~línea 13 |
 | Mobiliario | Retirado del sitio | Sin fotos. El README documenta cómo reactivarlo. |
 
 La evidencia del corte láser es fuerte (bio, hashtags, fotos del portafolio), pero

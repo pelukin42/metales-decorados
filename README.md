@@ -29,21 +29,13 @@ Luego entrá a `http://localhost:5180`.
 ## Estructura
 
 ```
-index.html               Portada de la propuesta + comparador de planes
+index.html               Redirige a amedida/index.html
 PENDIENTES-CLIENTE.md    Lista de datos por confirmar con el propietario
 assets/
   core.css               Sistema visual base (compartido)
   core.js                Configuración del negocio, WhatsApp, placeholders
 
-profesional/             DEMO — Plan Profesional
-  index.html
-  css/styles.css         copia de core.css
-  css/site.css           estilos propios de esta versión
-  js/core.js             copia de core.js
-  js/main.js             galería + formulario de cotización
-  img/LEEME.txt          qué fotos hacen falta y cómo se llaman
-
-amedida/                DEMO — Plan A Medida
+amedida/                Sitio — Plan Premium
   index.html
   css/styles.css         copia de core.css
   css/site.css           estilos propios de esta versión
@@ -55,10 +47,10 @@ amedida/                DEMO — Plan A Medida
 ```
 
 > `assets/core.css` y `assets/core.js` son la **fuente única**. Si los editás,
-> volvé a copiarlos a las dos versiones:
+> volvé a copiarlos:
 > ```bash
-> cp assets/core.css profesional/css/styles.css && cp assets/core.css amedida/css/styles.css
-> cp assets/core.js profesional/js/core.js && cp assets/core.js amedida/js/core.js
+> cp assets/core.css amedida/css/styles.css
+> cp assets/core.js amedida/js/core.js
 > ```
 
 ---
@@ -109,8 +101,7 @@ celular. Reemplazarlas es trivial: **se copia la foto nueva encima, con el mismo
 > navegador puede no llegar a intentar la descarga nunca, y entonces el evento `error` no se
 > dispara: si dependiéramos de él, el hueco quedaría vacío en lugar de mostrar el aviso.
 
-La lista completa de nombres, y lo que falta, está en `profesional/img/LEEME.txt` y
-`amedida/img/LEEME.txt`.
+La lista completa de nombres, y lo que falta, está en `amedida/img/LEEME.txt`.
 
 ### Mobiliario: retirado por falta de fotos
 
@@ -125,11 +116,9 @@ como pendiente. No se perdió nada: es solo contenido, y vuelve apenas manden fo
 | `amedida/js/main.js` | Volver a agregar el objeto `mobiliario` a `SERVICIOS`, y `'Mobiliario'` a `CATEGORIAS`. Añadir el proyecto al arreglo `PROYECTOS`. |
 | `amedida/js/cotizador.js` | Agregar `Mobiliario` y `Mesa` a `CZ_TIPOS`. |
 | `amedida/js/chatbot.js` | Agregar `'Mobiliario'` a las opciones de `botQue()`. |
-| `profesional/index.html` | Volver a poner la tarjeta de servicio, la opción del `<select>` y el enlace del pie. |
-| Ambos | Sumar `mobiliario` a los textos de `<title>`, `description`, el hero y el pie. |
+| `amedida/index.html` | Sumar `mobiliario` a los textos de `<title>`, `description`, el hero y el pie. |
 
-La única foto que la versión Profesional espera y no existe es `servicio-mobiliario.jpg`; en
-A Medida, además, `p11-a.jpg` para la ficha de "Proyectos especiales".
+La foto que falta es `p11-a.jpg`, para la ficha de "Proyectos especiales".
 
 ---
 
@@ -190,16 +179,13 @@ Todo esto está detallado en `PENDIENTES-CLIENTE.md`.
 
 ## Activar el corte láser (cuando el cliente confirme)
 
-**Plan A Medida** — en `amedida/js/main.js`, línea ~13:
+En `amedida/js/main.js`, línea ~13:
 
 ```js
 const MD_LASER = true;   // estaba en false
 ```
 
-**Plan Profesional** — en `profesional/index.html`, quitar el atributo `hidden`
-del `<article id="card-laser">`.
-
-En ambos casos, completar después el texto real del servicio (materiales, espesores).
+Completar después el texto real del servicio (materiales, espesores).
 
 ---
 
