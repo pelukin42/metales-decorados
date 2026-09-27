@@ -3,11 +3,6 @@
   command = ""
 
 [[redirects]]
-  from = "/profesional*"
-  to = "/profesional/index.html"
-  status = 200
-
-[[redirects]]
   from = "/amedida*"
   to = "/amedida/index.html"
   status = 200
