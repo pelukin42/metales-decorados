@@ -13,7 +13,7 @@ const CZ_TIPOS = [
   { v:'Portón',              i:'M3 20h18M5 20V8l7-4 7 4v12M9 20v-6M15 20v-6' },
   { v:'Puerta principal',    i:'M6 21V4a1 1 0 011-1h10a1 1 0 011 1v17M6 21h12M14 12h.01' },
   { v:'Reja',                i:'M4 4v16M9 4v16M15 4v16M20 4v16M4 9h16M4 15h16' },
-  { v:'Pasamanos o baranda', i:'M3 17L21 7M6 19v-6M11 16v-6M16 13v-6' },
+  { v:'Barandas o pasamanos', i:'M3 17L21 7M6 19v-6M11 16v-6M16 13v-6' },
   { v:'Decoración',          i:'M12 3v4M12 21v-4M8 7h8l-1.5 6h-5L8 7zM10 17h4' },
   { v:'Otro proyecto',       i:'M12 5v14M5 12h14' }
 ];

@@ -23,11 +23,7 @@ Formato: .jpg  |  Ancho recomendado: 1600 px  |  Peso ideal: menos de 400 KB
 
 LO QUE FALTA
 ------------
-p11-a.jpg                 PROYECTO ESPECIAL para el catalogo. Esta ficha
-                          aparece marcada como "Fotos pendientes". Al copiar el
-                          archivo con ese nombre, se completa sola. Para
-                          agregarle mas fotos, abrir js/main.js y llenar el
-                          campo "fotos" de p11.
+(nada pendiente por ahora)
 
 NOTA: el servicio de MOBILIARIO se retiro del sitio por falta de fotografias.
       Si el cliente manda fotos de juegos de sala, comedor, mesas o bancos,

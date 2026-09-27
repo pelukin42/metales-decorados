@@ -39,11 +39,11 @@ const SERVICIOS = [
     wa:'Hola, vi la sección de rejas en su página web y quisiera solicitar una cotización.'
   },
   {
-    id:'pasamanos', tag:'Pasamanos', titulo:'Pasamanos y barandas',
-    img:'servicio-pasamanos.jpg', ph:'Pasamanos de escalera o baranda',
-    texto:'Pasamanos de escalera, barandas de balcón y de terraza, ajustados al espacio y al estilo del proyecto.',
+    id:'pasamanos', tag:'Barandas', titulo:'Barandas',
+    img:'servicio-pasamanos.jpg', ph:'Baranda de escalera o pasamanos',
+    texto:'Barandas de escalera, de balcón y de terraza, ajustadas al espacio y al estilo del proyecto.',
     cta:'Solicitar cotización',
-    wa:'Hola, vi la sección de pasamanos en su página web y quisiera cotizar uno para mi proyecto.'
+    wa:'Hola, vi la sección de barandas en su página web y quisiera cotizar una para mi proyecto.'
   },
   {
     id:'decoracion', tag:'Decoración', titulo:'Decoración en metal',
@@ -96,7 +96,7 @@ function pintarServicios(){
    reales de Metales Decorados. Los campos marcados como PENDIENTE no se
    inventan: se confirman con el cliente antes de publicar.
    ========================================================================== */
-const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Pasamanos','Decoración','Proyectos especiales'];
+const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración'];
 
 /* Las fotografias provienen de las publicaciones reales de @metales_decorados01.
    Las descripciones se apoyan en los pies de foto que el propio negocio publico.
@@ -137,7 +137,7 @@ const PROYECTOS = [
     tipo:'Fabricación a medida', material:'Hierro forjado y vidrio', ubicacion:'PENDIENTE',
     fotos:['proyecto-07-a.jpg'] },
 
-  { id:'p08', cat:'Pasamanos',  titulo:'Baranda de escalera interna',
+  { id:'p08', cat:'Barandas',  titulo:'Baranda de escalera interna',
     resumen:'Baranda de diseño para escalera de peldaños de madera, fabricada a la medida del tramo.',
     tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
     fotos:['proyecto-08-a.jpg'] },
@@ -162,7 +162,7 @@ const PROYECTOS = [
     tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
     fotos:['proyecto-13-a.jpg'] },
 
-  { id:'p14', cat:'Pasamanos',  titulo:'Baranda con cenefa circular geométrica',
+  { id:'p14', cat:'Barandas',  titulo:'Baranda con cenefa circular geométrica',
     resumen:'Baranda de mezanine con panel calado de círculos entrelazados, en interior residencial.',
     tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
     fotos:['proyecto-14-a.jpg'] },
@@ -177,17 +177,10 @@ const PROYECTOS = [
     tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
     fotos:['proyecto-16-a.jpg'] },
 
-  { id:'p17', cat:'Pasamanos',  titulo:'Baranda de escalera con vista de conjunto',
+  { id:'p17', cat:'Barandas',  titulo:'Baranda de escalera con vista de conjunto',
     resumen:'Baranda de escalera curva en forja, con remates ornamentales en cada tramo.',
     tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
-    fotos:['proyecto-17-a.jpg'] },
-
-  /* Categoria confirmada por el negocio, pendiente de fotografia.
-     Se deja visible para mostrar donde entran las fotos que falten. */
-  { id:'p11', cat:'Proyectos especiales', titulo:'Proyecto personalizado',
-    resumen:'Trabajos desarrollados a partir de una idea o referencia del cliente.',
-    tipo:'Proyecto a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
-    fotos:[] }
+    fotos:['proyecto-17-a.jpg'] }
 ];
 
 let filtroActivo = 'Todos';
@@ -323,8 +316,7 @@ function abrirFicha(id){
 /* Tipo del cotizador que corresponde a cada categoria del catalogo */
 const TIPO_POR_CAT = {
   'Portones':'Portón', 'Puertas':'Puerta principal', 'Rejas':'Reja',
-  'Pasamanos':'Pasamanos o baranda', 'Decoración':'Decoración',
-  'Proyectos especiales':'Otro proyecto'
+  'Barandas':'Barandas o pasamanos', 'Decoración':'Decoración'
 };
 
 function cerrarFicha(){

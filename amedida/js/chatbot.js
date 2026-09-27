@@ -31,7 +31,7 @@ const BOT_NO_SE = 'No tengo esa información confirmada, pero podés consultarla
    -------------------------------------------------------------------------- */
 const BOT_FAQ = [
   { p:'¿Qué trabajos hacen?',
-    r:'Metales Decorados fabrica <b>portones, puertas principales, rejas, pasamanos y barandas</b>, ' +
+    r:'Metales Decorados fabrica <b>portones, puertas principales, rejas y barandas</b>, ' +
       'además de <b>decoración</b> en metal, como lámparas y piezas caladas. También proyectos a medida.' },
 
   { p:'¿Hacen trabajos personalizados?',
@@ -186,7 +186,7 @@ function botQue(){
   botEscribiendo(450, function(){
     botDecir('Perfecto. <b>¿Qué necesitás realizar?</b>');
     botOpciones(
-      ['Portón','Puerta principal','Rejas','Pasamanos','Decoración','Otro']
+      ['Portón','Puerta principal','Rejas','Barandas','Decoración','Otro']
         .map(function(v){
           return { t:v, fn:function(){ BOT.datos.tipo = v; botLugar(); } };
         })
