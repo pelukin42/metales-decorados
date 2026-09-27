@@ -103,11 +103,13 @@ function initHeader(){
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
+      document.body.classList.toggle('nav-open', open);
     });
     nav.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', function(){
         nav.classList.remove('is-open'); burger.classList.remove('is-open');
         document.body.style.overflow = '';
+        document.body.classList.remove('nav-open');
       });
     });
   }

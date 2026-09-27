@@ -98,6 +98,11 @@ h1,h2,h3,h4{ font-family:var(--ff-display); font-weight:600; line-height:1.1; le
   background:rgba(13,14,16,.85); backdrop-filter:blur(14px) saturate(1.4);
   border-bottom-color:var(--line-soft); padding:11px 0;
 }
+/* backdrop-filter en .hdr crea un "containing block" para hijos position:fixed
+   (como .nav en movil): si el menu se abre con el header ya pegado, quedaria
+   fijado relativo al header en vez de a toda la pantalla. Se quita mientras
+   el menu esta abierto para que .nav siempre se posicione contra el viewport. */
+body.nav-open .hdr{ backdrop-filter:none; }
 .hdr__in{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
 .brand{ display:flex; align-items:center; gap:12px; flex:none; }
 .brand__mark{
