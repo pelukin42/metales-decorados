@@ -516,6 +516,38 @@ const PROYECTOS = [
     fotos:['proyecto-47-a.jpg'],
     en:{ titulo:'Fireplace doors with wrought iron butterfly design',
       resumen:'Double fireplace doors with a symmetrical butterfly-shaped scroll design and forged handles, under a stone mantel.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p48', cat:'Muebles',    titulo:'Juego de sala con estructura metálica y cojines grises',
+    resumen:'Sofá de tres plazas y dos sillones con estructura metálica negra y cojines grises.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-48-a.jpg'],
+    en:{ titulo:'Living set with metal frame and gray cushions',
+      resumen:'Three-seat sofa and two armchairs with a black metal frame and gray cushions.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p49', cat:'Muebles',    titulo:'Juego de sala de terraza en forja con cojines',
+    resumen:'Sofá, dos sillones y mesa de centro en hierro forjado con detalles calados y cojines, en una terraza con vista a la montaña.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-49-a.jpg'],
+    en:{ titulo:'Wrought iron patio living set with cushions',
+      resumen:'Sofa, two armchairs and a coffee table in wrought iron with cut-out details and cushions, on a terrace with a mountain view.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p50', cat:'Muebles',    titulo:'Sala de corredor en forja con respaldos calados',
+    resumen:'Sofá, sillones y mesas de centro en hierro forjado con respaldos calados y cojines color arena, en un corredor techado.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-50-a.jpg'],
+    en:{ titulo:'Covered patio lounge in wrought iron with cut-out backs',
+      resumen:'Sofa, armchairs and coffee tables in wrought iron with cut-out backs and sand-colored cushions, on a covered patio.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p51', cat:'Chimeneas',  titulo:'Puertas de hierro remachadas para horno de barro',
+    resumen:'Puertas dobles remachadas para la base de un horno de barro con chimenea.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-51-a.jpg'],
+    en:{ titulo:'Riveted iron doors for a clay oven',
+      resumen:'Double riveted doors for the base of a clay oven with a chimney.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
