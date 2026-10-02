@@ -9,3 +9,5 @@ build/
 .DS_Store
 Thumbs.db
 entrada-fotos/
+__pycache__/
+*.pyc
