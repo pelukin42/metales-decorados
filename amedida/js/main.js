@@ -428,6 +428,22 @@ const PROYECTOS = [
     fotos:['proyecto-36-a.jpg'],
     en:{ titulo:'Spiral staircase with plate treads',
       resumen:'Exterior spiral staircase with textured plate treads, tube railing and a continuous handrail, in a silver finish.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p37', cat:'Muebles',    titulo:'Cama de estructura metálica blanca con paneles de madera',
+    resumen:'Cama con cabecera y pie en estructura metálica pintada de blanco, con paneles de madera barnizada.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-37-a.jpg'],
+    en:{ titulo:'White metal-frame bed with wood panels',
+      resumen:'Bed with a headboard and footboard in white-painted metal, with varnished wood panels.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p38', cat:'Muebles',    titulo:'Banca de forja con respaldo calado y asiento tejido',
+    resumen:'Banca de dos plazas en hierro negro, con respaldo calado de círculos y volutas, brazos curvos y asiento tejido.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-38-a.jpg'],
+    en:{ titulo:'Wrought iron bench with cut-out back and woven seat',
+      resumen:'Two-seat bench in black iron, with a cut-out back of circles and scrolls, curved arms and a woven seat.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
