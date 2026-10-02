@@ -76,6 +76,7 @@
   }
   function pintar(){
     if (!tarjeta) return;
+    tarjeta.dataset.paso = paso;
     let html = '<button type="button" class="guia__x" data-g="cerrar" aria-label="' + g('cerrar') + '">&times;</button>' +
                '<p class="eyebrow">' + g('eyebrow') + '</p>';
     if (paso === 'inicio'){

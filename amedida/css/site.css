@@ -92,7 +92,7 @@
   .catcard{ aspect-ratio:1/1; border-radius:16px; }
   .catcard:last-child:nth-child(odd){ aspect-ratio:2/1; }
   .catcard__body{ padding:12px 14px 14px; }
-  .catcard__n{ font-size:10px; letter-spacing:.1em; }
+  .catcard__n{ font-size:11px; letter-spacing:.08em; }
   .catcard__body h3{ font-size:1.02rem; }
   .catcard__ver{ display:none; }
 }
@@ -330,7 +330,7 @@
   background:linear-gradient(135deg,var(--brass-hi),var(--brass-lo)); color:#181206;
   display:grid; place-items:center;
 }
-.bot__legal{ font-size:10.5px; color:var(--tx-3); text-align:center; margin-top:9px; line-height:1.45; }
+.bot__legal{ font-size:11px; color:var(--tx-3); text-align:center; margin-top:9px; line-height:1.45; }
 
 @media (max-width:460px){
   .bot{ right:8px; left:8px; bottom:8px; width:auto; height:calc(100vh - 16px); border-radius:14px; }
@@ -344,6 +344,7 @@
   background:var(--bg-2); border:1px solid rgba(200,160,74,.35); border-radius:18px;
   box-shadow:0 30px 70px -20px rgba(0,0,0,.9);
   animation:guiaIn .45s var(--ease);
+  max-height:calc(100vh - 156px - 84px); max-height:calc(100dvh - 156px - 84px); overflow-y:auto; overscroll-behavior:contain;
 }
 @keyframes guiaIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
 .guia .eyebrow{ margin:0 0 6px; }
@@ -368,7 +369,13 @@
 .guia__pie button:hover{ color:var(--brass); }
 @media (max-width:600px){
   /* encima de los botones flotantes (asistente y WhatsApp), que van a la derecha */
-  .guia{ left:12px; right:12px; bottom:164px; width:auto; max-width:none; }
+  .guia{ left:12px; right:12px; bottom:164px; width:auto; max-width:none; max-height:calc(100vh - 164px - 84px); max-height:calc(100dvh - 164px - 84px); }
+}
+
+/* Celulares bajos: la primera tarjeta se compacta para que se vean las tres opciones sin desplazarse */
+@media (max-height:700px){
+  .guia[data-paso="inicio"] p:not(.eyebrow){ display:none; }
+  .guia[data-paso="inicio"] .guia__op small{ display:none; }
 }
 
 /* ---------- Contacto ---------- */
