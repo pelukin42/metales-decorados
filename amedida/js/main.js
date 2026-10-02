@@ -93,7 +93,6 @@ function svCampo(s, campo){
 }
 
 const FLECHA = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-const FLECHA_ATRAS = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
 
 /* --------------------------------------------------------------------------
    FOTOS LIVIANAS
@@ -643,7 +642,6 @@ function pintarFiltros(){
 
   cont.setAttribute('aria-label', t('Categorías', 'Categories'));
   cont.innerHTML =
-    '<button class="filtro filtro--back" data-cat="">' + FLECHA_ATRAS + t('Categorías', 'Categories') + '</button>' +
     categoriasActivas().map(function(c){
       return '<button class="filtro' + (c === filtroActivo ? ' is-on' : '') + '" data-cat="' + c + '" ' +
                'aria-pressed="' + (c === filtroActivo) + '">' +
@@ -652,8 +650,10 @@ function pintarFiltros(){
 
   cont.querySelectorAll('.filtro').forEach(function(b){
     b.addEventListener('click', function(){
-      /* Volver a las categorias lleva al inicio del catalogo; cambiar de categoria no mueve la pagina */
-      aplicarFiltro(b.dataset.cat, { desplazar: !b.dataset.cat });
+      /* Tocar otra categoria la cambia sin mover la pagina; tocar la que ya esta elegida
+         vuelve a las portadas y lleva la pantalla al inicio del catalogo */
+      if (b.dataset.cat === filtroActivo) aplicarFiltro(null, { desplazar:true });
+      else aplicarFiltro(b.dataset.cat);
     });
   });
 

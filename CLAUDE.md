@@ -74,7 +74,7 @@ anchos para ahorrar peso: ya se midió que a esos ajustes no se nota la diferenc
 ## Catálogo
 
 Al abrir solo se ven las categorías (portada + cantidad). Las fotos de los proyectos aparecen
-al elegir una; no volver a poner una vista con todos los proyectos a la vez. Las portadas se
+al elegir una; no volver a poner una vista ni un botón "Todos" con todos los proyectos a la vez. Las portadas se
 eligen en `CAT_PORTADA` de `amedida/js/main.js`. Una categoría nueva va en `CATEGORIAS`,
 `CAT_LABEL_EN` y en el campo `cat` de sus proyectos.
 

@@ -130,7 +130,9 @@ python herramientas/optimizar-fotos.py --revisar   # avisa si algo quedó desact
 
 Al abrir el catálogo solo se ven las categorías, cada una con una foto de portada y su cantidad
 de proyectos. Las fotos de los proyectos aparecen cuando la persona elige una categoría
-(así no se ve recargado y no se bajan decenas de fotos de golpe). La portada de cada categoría
+(así no se ve recargado y no se bajan decenas de fotos de golpe). No existe una opción "Todos":
+solo se ven los proyectos de la categoría elegida. Con una categoría abierta, los botones de
+arriba permiten cambiar de categoría, y tocar otra vez la elegida (lleva una ×) vuelve a las portadas. La portada de cada categoría
 se elige en `CAT_PORTADA` (`amedida/js/main.js`); una categoría nueva se agrega a `CATEGORIAS`
 y a `CAT_LABEL_EN`, y sus proyectos a `PROYECTOS` con ese nombre en `cat`.
 
