@@ -17,8 +17,9 @@ COMO AGREGAR O REEMPLAZAR UNA FOTO
 1. Copiar la foto a esta carpeta (img/) con el nombre exacto. Aparece sola, sin tocar
    codigo. Si un archivo falta, la pagina muestra un marcador que dice "FOTOGRAFIA
    PENDIENTE" con el nombre de lo que va ahi.
-2. Correr   python herramientas/optimizar-fotos.py   (necesita:  pip install pillow).
-   Crea las copias livianas de la carpeta img/web/ y actualiza js/fotos-web.js.
+2. Correr   python herramientas/optimizar-fotos.py   (necesita:  pip install pillow numpy).
+   Crea las copias livianas de la carpeta img/web/, una vista previa borrosa de cada foto y
+   actualiza js/fotos-web.js. La calidad se ajusta sola, foto por foto.
    Si se REEMPLAZA una foto y no se corre, las tarjetas siguen mostrando la anterior.
 3. Subir tambien lo que cambie en img/web/, js/fotos-web.js e index.html.
 

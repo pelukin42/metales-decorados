@@ -68,8 +68,22 @@ python herramientas/optimizar-fotos.py --revisar  # avisa si algo quedó desactu
 
 Se suben al repo junto con la foto (también el `?v=` que el script pone en `index.html`).
 Una foto nueva aparece sola sin correrlo, pero **si se reemplaza una existente hay que
-correrlo**, o las tarjetas seguirán mostrando la anterior. No bajar la calidad (82) ni los
-anchos para ahorrar peso: ya se midió que a esos ajustes no se nota la diferencia en pantalla.
+correrlo**, o las tarjetas seguirán mostrando la anterior. Requiere `pip install pillow numpy`.
+
+La calidad no es un número fijo: por cada copia el script elige la compresión más fuerte
+(WebP 62–82) que todavía conserve un parecido (SSIM) de al menos 0.965 con la original. No bajar
+ese piso ni los anchos para ahorrar peso. Además de las copias, el script guarda en
+`fotos-web.js` una vista previa borrosa de cada foto (`l`, ~300 bytes).
+
+### Cómo se cargan las fotos (no romper esto)
+
+- Las fotos que arma `main.js` se piden **por turnos**: `imgFoto()` no pone `src` sino
+  `data-src`, y `diferirFotos()` las pide cuando están por verse (500 px de margen), de a 2
+  en celular y 3 en escritorio, las más cercanas al borde de la pantalla primero. Sin esto, en
+  conexiones lentas las fotos de abajo le quitan la conexión a las que la persona está viendo.
+  Cualquier `<img>` nueva generada por JS debe usar `imgFoto()` y llamar a `diferirFotos()`.
+- Mientras una foto baja se ve su vista previa borrosa (o un fondo liso), **sin** el texto
+  "Fotografía pendiente"; ese texto aparece solo si la foto falla o no existe.
 
 ## Catálogo
 

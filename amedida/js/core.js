@@ -68,29 +68,40 @@ const PH_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" str
 /* El marcador se dibuja por defecto DEBAJO de la imagen y se retira en cuanto
    la fotografia carga bien. Se hace en este orden a proposito: con
    loading="lazy" el navegador puede no intentar nunca la descarga, y entonces
-   el evento "error" no llega a dispararse y el hueco quedaria vacio. */
+   el evento "error" no llega a dispararse y el hueco quedaria vacio.
+
+   Mientras la foto baja NO se lee "Fotografia pendiente" (parecia que faltaba): se ve
+   un borroso de la propia foto (data-lqip) o un fondo liso. El texto aparece solo si la
+   foto de verdad falla o no existe. */
 function initPlaceholders(){
   document.querySelectorAll('img[data-ph]').forEach(function(img){
     if (img.dataset.phInit) return;
     img.dataset.phInit = '1';
     if (!img.parentNode) return;
+    if (img.complete && img.naturalWidth > 0) return;      // ya estaba en cache: no hace falta marcador
 
     const box = document.createElement('div');
-    box.className = 'ph';
+    box.className = 'ph ph--carga';
     const esEn = (typeof idioma !== 'undefined' && idioma === 'en');
     box.innerHTML = PH_ICON +
       '<b>' + (esEn ? 'Photo pending' : 'Fotografía pendiente') + '</b>' +
       '<span>' + (img.dataset.ph || (esEn ? 'Project photo' : 'Imagen del proyecto')) + '</span>';
+    if (img.dataset.lqip){
+      box.classList.add('ph--lqip');
+      box.style.backgroundImage = 'url("' + img.dataset.lqip + '")';
+      if (img.style.objectPosition) box.style.backgroundPosition = img.style.objectPosition;
+    }
     /* Si la foto va dentro de un <picture>, el marcador va antes del <picture> */
     const ref = (img.parentNode.tagName === 'PICTURE') ? img.parentNode : img;
     ref.parentNode.insertBefore(box, ref);
 
-    const cargo = function(){
-      if (img.naturalWidth > 0){ box.remove(); img.style.display = ''; }
+    const listo = function(){
+      box.classList.add('ph--fuera');                       // se desvanece y deja ver la foto
+      setTimeout(function(){ box.remove(); }, 500);
+      img.style.display = '';
     };
-    if (img.complete) { cargo(); }
-    img.addEventListener('load', cargo);
-    img.addEventListener('error', function(){
+    const cargo = function(){ if (img.naturalWidth > 0) listo(); };
+    const fallo = function(){
       /* Si falla la copia liviana (WebP) de un <picture>, se prueba con la foto
          original antes de dejar el marcador "Fotografia pendiente" */
       const pic = img.parentNode;
@@ -102,7 +113,15 @@ function initPlaceholders(){
         return;
       }
       img.style.display = 'none';
-    });
+      box.classList.remove('ph--carga', 'ph--lqip');          // ahora si: "Fotografia pendiente"
+      box.style.backgroundImage = '';
+    };
+    if (img.complete){
+      if (img.naturalWidth > 0) listo();
+      else if (img.currentSrc) fallo();                       // intento cargar y fallo
+    }
+    img.addEventListener('load', cargo);
+    img.addEventListener('error', fallo);
   });
 }
 

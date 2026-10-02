@@ -111,15 +111,18 @@ Las fotos originales (`img/*.jpg`) se quedan como están: son la fuente y lo que
 grande. De cada una, `herramientas/optimizar-fotos.py` crea copias más chicas en `img/web/`
 (WebP, 480 y 960 px; la portada 1280 y 1600 px) y escribe `js/fotos-web.js` con la lista. Las
 tarjetas, las miniaturas y la portada piden la copia que calza con la pantalla; la ficha usa la
-original en pantallas de alta densidad. Una tarjeta del catálogo pasa de ~230 KB a unos 40 KB en
-pantallas normales y ~115 KB en celulares y pantallas de alta densidad.
+original en pantallas de alta densidad. Una tarjeta del catálogo pasa de ~230 KB a unos 33 KB en
+pantallas normales y ~90 KB en celulares y pantallas de alta densidad.
 
 ```bash
-pip install pillow                           # una sola vez
+pip install pillow numpy                     # una sola vez
 python herramientas/optimizar-fotos.py       # después de agregar o reemplazar fotos
 python herramientas/optimizar-fotos.py --revisar   # avisa si algo quedó desactualizado
 ```
 
+- La calidad se ajusta por foto (la compresión más fuerte que aún se parezca a la original, SSIM ≥ 0.965),
+  y el script guarda una vista previa borrosa de cada una: se ve al instante mientras baja la foto real.
+- Las fotos se piden por turnos, las que se están viendo primero (ver `CLAUDE.md`, "Cómo se cargan las fotos").
 - Una foto nueva **aparece sola** aunque no se corra el script (con su `.jpg`, solo que más
   pesada). Si se **reemplaza** una foto sin correrlo, las tarjetas siguen mostrando la anterior.
 - Las fotos de menos de 960 px de ancho ya son livianas y se usan tal cual.

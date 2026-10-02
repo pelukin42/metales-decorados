@@ -104,26 +104,94 @@ const FLECHA = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stro
 function fotoWeb(archivo){
   const stem = archivo.replace(/\.jpg$/i, '');
   const d = (typeof FOTOS_WEB !== 'undefined') ? FOTOS_WEB[stem] : null;
-  return d ? { stem:stem, w:d.w, v:d.v } : null;
+  return d ? { stem:stem, w:d.w || [], v:d.v, l:d.l || '' } : null;
 }
 function urlWeb(f, ancho){ return 'img/web/' + f.stem + '-' + ancho + '.webp?v=' + f.v; }
 
 /* <img> de una foto del sitio. `sizes` dice cuanto ancho ocupa en pantalla para
-   que el navegador elija la copia justa; `extra` son atributos adicionales. */
+   que el navegador elija la copia justa; `extra` son atributos adicionales.
+   La foto NO se pide todavia (data-src / data-srcset): diferirFotos() la pide cuando
+   esta por verse, de a pocas y las mas cercanas primero. */
 function imgFoto(archivo, alt, sizes, extra){
-  const img = '<img src="img/' + archivo + '" alt="' + alt + '" loading="lazy" decoding="async" ' + (extra || '') + '>';
   const f = fotoWeb(archivo);
-  if (!f) return img;
+  const lq = (f && f.l) ? ' data-lqip="' + f.l + '"' : '';
+  const img = '<img data-src="img/' + archivo + '" alt="' + alt + '" decoding="async"' + lq + ' ' + (extra || '') + '>';
+  if (!f || !f.w.length) return img;
   const srcset = f.w.map(function(w){ return urlWeb(f, w) + ' ' + w + 'w'; }).join(', ');
-  return '<picture><source type="image/webp" srcset="' + srcset + '" sizes="' + sizes + '">' + img + '</picture>';
+  return '<picture><source type="image/webp" data-srcset="' + srcset + '" sizes="' + sizes + '">' + img + '</picture>';
+}
+
+/* --------------------------------------------------------------------------
+   CARGA DE FOTOS POR TURNOS
+   El navegador, en conexiones lentas, empieza a bajar a la vez todas las fotos que
+   estan "cerca" de la pantalla, y entonces las que la persona ya esta viendo se
+   demoran porque comparten la conexion con las de mas abajo. Aqui se hace al reves:
+   solo se piden las fotos que estan por verse (500 px de margen), maximo MAX_FOTOS
+   a la vez, siempre primero las mas cercanas al inicio de la pantalla. Si la persona
+   pasa rapido por unas fotos, esas no se bajan.
+   -------------------------------------------------------------------------- */
+const MAX_FOTOS = window.innerWidth > 900 ? 3 : 2;      // en celular, de a 2: las que se ven bajan mas rapido
+const COLA = { espera:[], activas:0, io:null };
+
+function activarFoto(img){
+  const r = img.getBoundingClientRect();
+  img.setAttribute('fetchpriority', (r.bottom > 0 && r.top < window.innerHeight) ? 'high' : 'low');
+  const pic = img.parentNode;
+  const s = (pic && pic.tagName === 'PICTURE') ? pic.querySelector('source[data-srcset]') : null;
+  if (s){ s.setAttribute('srcset', s.getAttribute('data-srcset')); s.removeAttribute('data-srcset'); }
+  img.setAttribute('src', img.getAttribute('data-src'));
+  img.removeAttribute('data-src');
+}
+
+function distanciaPantalla(img){
+  const r = img.getBoundingClientRect();
+  return r.bottom < 0 ? 100000 - r.bottom : Math.max(0, r.top);   // visibles primero; las que quedaron arriba, al final
+}
+
+function avanzarCola(){
+  while (COLA.activas < MAX_FOTOS && COLA.espera.length){
+    COLA.espera.sort(function(a, b){ return distanciaPantalla(a) - distanciaPantalla(b); });
+    const img = COLA.espera.shift();
+    if (!img.isConnected || !img.hasAttribute('data-src')) continue;
+    COLA.io.unobserve(img);
+    COLA.activas++;
+    let fin = null;
+    const terminar = function(){
+      if (!fin) return;
+      img.removeEventListener('load', fin); img.removeEventListener('error', fin);
+      fin = null; COLA.activas--; avanzarCola();
+    };
+    fin = terminar;
+    img.addEventListener('load', fin); img.addEventListener('error', fin);
+    setTimeout(function(){ terminar(); }, 12000);        // si la foto se quito de la pagina, no deja la cola trabada
+    activarFoto(img);
+  }
+}
+
+function diferirFotos(){
+  const pendientes = document.querySelectorAll('img[data-src]:not([data-cola])');
+  if (!pendientes.length) return;
+  if (!('IntersectionObserver' in window)){ pendientes.forEach(activarFoto); return; }
+  if (!COLA.io){
+    COLA.io = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        const i = COLA.espera.indexOf(e.target);
+        if (e.isIntersecting){ if (i < 0) COLA.espera.push(e.target); }
+        else if (i >= 0){ COLA.espera.splice(i, 1); }        // ya paso de largo: no se baja
+      });
+      avanzarCola();
+    }, { rootMargin:'500px 0px' });
+  }
+  pendientes.forEach(function(img){ img.setAttribute('data-cola', '1'); COLA.io.observe(img); });
 }
 
 /* Foto grande de la ficha. Celulares y pantallas normales: copia de 960 px, que
    ya cubre el ancho de la ventana. Pantallas de alta densidad mas anchas que un
    celular: la foto original, para no perder nitidez. */
 function imgFicha(archivo, alt, ph){
-  const img = '<img src="img/' + archivo + '" alt="' + alt + '" decoding="async" data-ph="' + ph + '">';
   const f = fotoWeb(archivo);
+  const lq = (f && f.l) ? ' data-lqip="' + f.l + '"' : '';
+  const img = '<img src="img/' + archivo + '" alt="' + alt + '" decoding="async" fetchpriority="high"' + lq + ' data-ph="' + ph + '">';
   if (!f || f.w.indexOf(960) < 0) return img;
   return '<picture><source type="image/webp" media="(max-width:600px), (max-resolution:1.1dppx)" srcset="' + urlWeb(f, 960) + '">' + img + '</picture>';
 }
@@ -169,6 +237,7 @@ function pintarServicios(){
     '</div></article>';
 
   cont.innerHTML = html;
+  diferirFotos();
 
   if (MD_LASER) document.getElementById('bloque-laser').hidden = false;
 }
@@ -708,6 +777,7 @@ function pintarCatalogo(){
       b.addEventListener('click', function(){ aplicarFiltro(b.dataset.cat, { desplazar:true }); });
     });
     initPlaceholders();
+    diferirFotos();
     initReveal();
     return;
   }
@@ -746,6 +816,7 @@ function pintarCatalogo(){
   });
 
   initPlaceholders();
+  diferirFotos();
   initReveal();
 }
 
@@ -810,6 +881,7 @@ function abrirFicha(id){
   m.hidden = false;
   document.body.style.overflow = 'hidden';
   initPlaceholders();
+  diferirFotos();
   initWhatsApp();
 
   /* "Quiero algo similar": cierra la ficha y abre el cotizador con el tipo de
