@@ -18,7 +18,7 @@ la página muestra la etiqueta `PENDIENTE CONFIRMAR CON CLIENTE`.
 | **Horario de atención** | ⬜ Pendiente | No se publica hasta confirmarlo. |
 | **Facebook / otras redes** | ⬜ Pendiente | Existe una página de Facebook con nombre similar; verificar si es la misma empresa. |
 | **Perfil de Google Business** | 🔴 **No existe** | El negocio **todavía no tiene perfil**. Es lo de mayor impacto de toda la propuesta: para un taller local, la ficha de Google trae más clientes que el sitio web. Hay que crearla, verificarla (Google manda un código) y llenarla. De ahí sale el enlace de reseñas que alimenta el QR. En el sitio se quitó la nota "Para activar" y el botón "Ver perfil en Google" (quedaban con etiquetas de pendiente visibles al público); la sección de reseñas queda solo con el mensaje genérico hasta que exista el perfil. Al crear y verificar el perfil: volver a agregar en `amedida/index.html` (sección `<div class="google rv">`) el botón "Ver perfil en Google" con el enlace real, y sumar la calificación/reseñas si se quiere mostrarlas. |
-| **Mapa** | ⬜ Pendiente | Se inserta al confirmar la dirección. |
+| **Mapa** | 🟡 Publicado solo de la zona | Muestra Guadalupe, Goicoechea (sin pin en el taller). Al confirmar la dirección: llenar `direccionExacta` y pegar en `mapsEmbed` (ambos en `assets/core.js`) el enlace de Google Maps > Compartir > Insertar un mapa. El rótulo "Zona del taller" se quita solo. |
 
 ---
 

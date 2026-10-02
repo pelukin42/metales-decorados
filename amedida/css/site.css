@@ -347,7 +347,12 @@
 .contact__list .is-pending{ color:var(--tx-3); font-size:14px; }
 .contact__btns{ display:flex; gap:12px; flex-wrap:wrap; }
 .contact__map{ border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; min-height:340px; position:relative; }
-.contact__map iframe{ width:100%; height:100%; min-height:340px; border:0; filter:grayscale(1) invert(.9) hue-rotate(180deg); }
+.contact__map iframe{ display:block; width:100%; height:100%; min-height:340px; border:0; filter:grayscale(1) invert(.9) hue-rotate(180deg); }
+.contact__zona{
+  position:absolute; left:12px; bottom:12px; z-index:2; max-width:calc(100% - 24px);
+  background:rgba(13,14,16,.88); border:1px solid var(--line); border-radius:100px;
+  padding:6px 13px; font-size:11.5px; color:var(--tx-2);
+}
 
 /* ---------- Hero sin fotografia: acabado de acero, no caja de marcador ----------
    Mientras no exista img/hero.jpg el fondo se ve como una superficie de metal

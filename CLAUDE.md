@@ -89,6 +89,13 @@ eligen en `CAT_PORTADA` de `amedida/js/main.js`.
 Los textos de los proyectos describen solo lo que se ve: no afirmar material (hierro, forja,
 aluminio, lámina), ubicación ni fechas que el cliente no haya confirmado. Eso va en `PENDIENTE`.
 
+## Mapa
+
+La sección de contacto muestra un mapa de Google cargado desde `MD.mapsEmbed` (`assets/core.js`),
+diferido (`loading="lazy"`) para no gastar datos hasta que se llega al contacto. Mientras no haya
+`MD.direccionExacta` confirmada, el mapa solo muestra la **zona** (Guadalupe, Goicoechea) y lleva el
+rótulo "Zona del taller"; no poner un pin ni una dirección que el cliente no haya confirmado.
+
 ## Banderas de servicios
 
 | Bandera | Estado | Dónde |

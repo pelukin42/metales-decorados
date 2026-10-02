@@ -917,6 +917,7 @@ const I18N = {
     contactCall:'Call now',
     contactMapH:'Map pending',
     contactMapTx:'The Google map will be added once the workshop’s exact address is confirmed.',
+    contactMapZona:'Workshop area · Exact location to be confirmed',
 
     /* Footer */
     ftrDesc:'Fabrication of gates, doors, window bars, railings and metal decor, custom-built for each project.',
