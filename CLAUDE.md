@@ -56,12 +56,34 @@ están en `amedida/img/LEEME.txt`.
 
 Falta pedir los originales del celular: las actuales vienen recomprimidas por Instagram.
 
+### Fotos livianas (WebP)
+
+Cada foto original de `amedida/img/` (`.jpg`) es la fuente y no se toca. Las copias WebP
+livianas de `amedida/img/web/` y `amedida/js/fotos-web.js` **se generan** con:
+
+```bash
+python herramientas/optimizar-fotos.py            # tras agregar o reemplazar fotos
+python herramientas/optimizar-fotos.py --revisar  # avisa si algo quedó desactualizado
+```
+
+Se suben al repo junto con la foto (también el `?v=` que el script pone en `index.html`).
+Una foto nueva aparece sola sin correrlo, pero **si se reemplaza una existente hay que
+correrlo**, o las tarjetas seguirán mostrando la anterior. No bajar la calidad (82) ni los
+anchos para ahorrar peso: ya se midió que a esos ajustes no se nota la diferencia en pantalla.
+
+## Catálogo
+
+Al abrir solo se ven las categorías (portada + cantidad). Las fotos de los proyectos aparecen
+al elegir una; no volver a poner una vista con todos los proyectos a la vez. Las portadas se
+eligen en `CAT_PORTADA` de `amedida/js/main.js`. Una categoría nueva va en `CATEGORIAS`,
+`CAT_LABEL_EN` y en el campo `cat` de sus proyectos.
+
 ## Banderas de servicios
 
 | Bandera | Estado | Dónde |
 |---|---|---|
 | Corte láser / CNC | `MD_LASER = false` | `amedida/js/main.js` ~línea 13 |
-| Mobiliario | Retirado del sitio | Sin fotos. El README documenta cómo reactivarlo. |
+| Mobiliario | Solo como categoría "Muebles" del catálogo | Falta activarlo como servicio (tarjeta, cotizador, asistente). El README documenta cómo. |
 
 La evidencia del corte láser es fuerte (bio, hashtags, fotos del portafolio), pero
 **no se publica** hasta que el cliente confirme materiales y espesores.
@@ -79,6 +101,7 @@ fechas, confirmar disponibilidad o dar por aceptada una solicitud. Cuando no sab
 ```bash
 python -m http.server 5180        # o el preview "propuesta" de launch.json
 python herramientas/generar-pdf.py  # catálogo + tarjeta de reseñas
+python herramientas/optimizar-fotos.py  # versiones livianas de las fotos (WebP)
 ```
 
 El QR de reseñas está pendiente: no existe perfil de Google Business todavía. Al
@@ -91,3 +114,4 @@ crearlo, pegar el enlace en `URL_RESENA` de `herramientas/generar-pdf.py` y rege
 3. Conectar el envío por correo (Formspree o serverless) para que quede registro de
    cada solicitud. Marcado con `NOTA DE IMPLEMENTACIÓN` en `js/main.js` y
    `js/cotizador.js`. Requiere el correo del cliente, aún pendiente.
+4. Correr `python herramientas/optimizar-fotos.py --revisar` y confirmar que dice "Todo al día".

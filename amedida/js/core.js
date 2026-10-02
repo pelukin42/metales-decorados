@@ -75,14 +75,28 @@ function initPlaceholders(){
     box.innerHTML = PH_ICON +
       '<b>' + (esEn ? 'Photo pending' : 'Fotografía pendiente') + '</b>' +
       '<span>' + (img.dataset.ph || (esEn ? 'Project photo' : 'Imagen del proyecto')) + '</span>';
-    img.parentNode.insertBefore(box, img);
+    /* Si la foto va dentro de un <picture>, el marcador va antes del <picture> */
+    const ref = (img.parentNode.tagName === 'PICTURE') ? img.parentNode : img;
+    ref.parentNode.insertBefore(box, ref);
 
     const cargo = function(){
       if (img.naturalWidth > 0){ box.remove(); img.style.display = ''; }
     };
     if (img.complete) { cargo(); }
     img.addEventListener('load', cargo);
-    img.addEventListener('error', function(){ img.style.display = 'none'; });
+    img.addEventListener('error', function(){
+      /* Si falla la copia liviana (WebP) de un <picture>, se prueba con la foto
+         original antes de dejar el marcador "Fotografia pendiente" */
+      const pic = img.parentNode;
+      if (pic && pic.tagName === 'PICTURE' && pic.querySelector('source')){
+        const original = img.getAttribute('src');
+        pic.querySelectorAll('source').forEach(function(s){ s.remove(); });
+        img.removeAttribute('src');
+        img.src = original;
+        return;
+      }
+      img.style.display = 'none';
+    });
   });
 }
 

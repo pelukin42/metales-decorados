@@ -232,6 +232,10 @@ body.nav-open .hdr{ backdrop-filter:none; }
   padding:6px 13px; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tx-2);
 }
 
+/* <picture> (fotos livianas en WebP) no debe cambiar el diseno: la <img> sigue
+   comportandose como hija directa de su contenedor */
+picture{ display:contents; }
+
 /* ---------- Placeholders de fotografia ---------- */
 .ph{
   position:absolute; inset:0;

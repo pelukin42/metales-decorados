@@ -40,10 +40,12 @@ amedida/                Sitio — Plan Premium
   css/styles.css         copia de core.css
   css/site.css           estilos propios de esta versión
   js/core.js             copia de core.js
-  js/main.js             servicios, catálogo filtrable, ficha, bilingüe
+  js/main.js             servicios, catálogo por categorías, ficha, bilingüe
+  js/fotos-web.js        (generado) lista de fotos que tienen versión liviana
   js/cotizador.js        cotizador avanzado en 4 pasos
   js/chatbot.js          asistente virtual
   img/LEEME.txt          qué fotos hacen falta y cómo se llaman
+  img/web/               (generado) copias WebP livianas de las fotos
 ```
 
 > `assets/core.css` y `assets/core.js` son la **fuente única**. Si los editás,
@@ -103,22 +105,51 @@ celular. Reemplazarlas es trivial: **se copia la foto nueva encima, con el mismo
 
 La lista completa de nombres, y lo que falta, está en `amedida/img/LEEME.txt`.
 
-### Mobiliario: retirado por falta de fotos
+### Fotos livianas (WebP): la página carga más rápido
 
-Metales Decorados **sí ofrece mobiliario** (juegos de sala y comedor, mesas, bancos, estantes),
-pero no hay ninguna fotografía, así que se quitó del sitio en lugar de dejar un hueco marcado
-como pendiente. No se perdió nada: es solo contenido, y vuelve apenas manden fotos.
+Las fotos originales (`img/*.jpg`) se quedan como están: son la fuente y lo que se ve en
+grande. De cada una, `herramientas/optimizar-fotos.py` crea copias más chicas en `img/web/`
+(WebP, 480 y 960 px; la portada 1280 y 1600 px) y escribe `js/fotos-web.js` con la lista. Las
+tarjetas, las miniaturas y la portada piden la copia que calza con la pantalla; la ficha usa la
+original en pantallas de alta densidad. Una tarjeta del catálogo pasa de ~230 KB a unos 40 KB en
+pantallas normales y ~115 KB en celulares y pantallas de alta densidad.
 
-**Para reactivarlo** cuando lleguen las fotos:
+```bash
+pip install pillow                           # una sola vez
+python herramientas/optimizar-fotos.py       # después de agregar o reemplazar fotos
+python herramientas/optimizar-fotos.py --revisar   # avisa si algo quedó desactualizado
+```
+
+- Una foto nueva **aparece sola** aunque no se corra el script (con su `.jpg`, solo que más
+  pesada). Si se **reemplaza** una foto sin correrlo, las tarjetas siguen mostrando la anterior.
+- Las fotos de menos de 960 px de ancho ya son livianas y se usan tal cual.
+- Hay que subir también lo que cambie en `img/web/`, `js/fotos-web.js` e `index.html`.
+- Si una copia WebP falla, la página cae sola a la foto original.
+
+### El catálogo: primero las categorías
+
+Al abrir el catálogo solo se ven las categorías, cada una con una foto de portada y su cantidad
+de proyectos. Las fotos de los proyectos aparecen cuando la persona elige una categoría
+(así no se ve recargado y no se bajan decenas de fotos de golpe). La portada de cada categoría
+se elige en `CAT_PORTADA` (`amedida/js/main.js`); una categoría nueva se agrega a `CATEGORIAS`
+y a `CAT_LABEL_EN`, y sus proyectos a `PROYECTOS` con ese nombre en `cat`.
+
+### Mobiliario: en el catálogo, todavía no como servicio
+
+Metales Decorados **sí ofrece mobiliario** (juegos de sala y comedor, mesas, bancos, camas). Ya hay
+una categoría **Muebles** en el catálogo con sus proyectos. Lo que sigue sin activarse es el servicio
+como tal (tarjeta en "Qué fabricamos", opción en el cotizador y en el asistente).
+
+**Para activarlo del todo:**
 
 | Dónde | Qué hacer |
 |---|---|
-| `amedida/js/main.js` | Volver a agregar el objeto `mobiliario` a `SERVICIOS`, y `'Mobiliario'` a `CATEGORIAS`. Añadir el proyecto al arreglo `PROYECTOS`. |
+| `amedida/js/main.js` | Agregar el objeto `mobiliario` a `SERVICIOS` y `'Muebles'` a `TIPO_POR_CAT`. |
 | `amedida/js/cotizador.js` | Agregar `Mobiliario` y `Mesa` a `CZ_TIPOS`. |
 | `amedida/js/chatbot.js` | Agregar `'Mobiliario'` a las opciones de `botQue()`. |
 | `amedida/index.html` | Sumar `mobiliario` a los textos de `<title>`, `description`, el hero y el pie. |
 
-La foto que falta es `p11-a.jpg`, para la ficha de "Proyectos especiales".
+Necesita una foto `servicio-mobiliario.jpg` para la tarjeta de servicio.
 
 ---
 

@@ -93,6 +93,47 @@ function svCampo(s, campo){
 }
 
 const FLECHA = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const FLECHA_ATRAS = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+
+/* --------------------------------------------------------------------------
+   FOTOS LIVIANAS
+   js/fotos-web.js (lo genera herramientas/optimizar-fotos.py) lista las fotos
+   que tienen copias WebP mas chicas en img/web/. Si la foto esta en la lista,
+   el navegador baja solo la copia que calza con el espacio que ocupa; si no
+   esta, usa el .jpg original (la foto aparece igual, solo que mas pesada).
+   -------------------------------------------------------------------------- */
+function fotoWeb(archivo){
+  const stem = archivo.replace(/\.jpg$/i, '');
+  const d = (typeof FOTOS_WEB !== 'undefined') ? FOTOS_WEB[stem] : null;
+  return d ? { stem:stem, w:d.w, v:d.v } : null;
+}
+function urlWeb(f, ancho){ return 'img/web/' + f.stem + '-' + ancho + '.webp?v=' + f.v; }
+
+/* <img> de una foto del sitio. `sizes` dice cuanto ancho ocupa en pantalla para
+   que el navegador elija la copia justa; `extra` son atributos adicionales. */
+function imgFoto(archivo, alt, sizes, extra){
+  const img = '<img src="img/' + archivo + '" alt="' + alt + '" loading="lazy" decoding="async" ' + (extra || '') + '>';
+  const f = fotoWeb(archivo);
+  if (!f) return img;
+  const srcset = f.w.map(function(w){ return urlWeb(f, w) + ' ' + w + 'w'; }).join(', ');
+  return '<picture><source type="image/webp" srcset="' + srcset + '" sizes="' + sizes + '">' + img + '</picture>';
+}
+
+/* Foto grande de la ficha. Celulares y pantallas normales: copia de 960 px, que
+   ya cubre el ancho de la ventana. Pantallas de alta densidad mas anchas que un
+   celular: la foto original, para no perder nitidez. */
+function imgFicha(archivo, alt, ph){
+  const img = '<img src="img/' + archivo + '" alt="' + alt + '" decoding="async" data-ph="' + ph + '">';
+  const f = fotoWeb(archivo);
+  if (!f || f.w.indexOf(960) < 0) return img;
+  return '<picture><source type="image/webp" media="(max-width:600px), (max-resolution:1.1dppx)" srcset="' + urlWeb(f, 960) + '">' + img + '</picture>';
+}
+
+/* Espacio que ocupa cada foto segun las columnas de la rejilla (3 / 2 / 1) */
+const SIZES_SERVICIOS  = '(max-width:640px) 100vw, (max-width:960px) 50vw, 33vw';
+const SIZES_PROYECTOS  = '(max-width:600px) 100vw, (max-width:960px) 50vw, 33vw';
+const SIZES_CATEGORIAS = '(max-width:960px) 50vw, 33vw';
+const SIZES_MINIATURAS = '(max-width:600px) 45vw, 210px';
 
 function pintarServicios(){
   const cont = document.getElementById('servicios-grid');
@@ -105,7 +146,7 @@ function pintarServicios(){
     return '<article class="card rv" data-delay="' + ((i % 3) * 70) + '">' +
       '<div class="card__media">' +
         '<span class="tag">' + tag + '</span>' +
-        '<img src="img/' + s.img + '" alt="' + titulo + ' — Metales Decorados" loading="lazy" data-ph="' + ph + '">' +
+        imgFoto(s.img, titulo + ' — Metales Decorados', SIZES_SERVICIOS, 'data-ph="' + ph + '"') +
       '</div>' +
       '<div class="card__body">' +
         '<h3>' + titulo + '</h3>' +
@@ -139,12 +180,28 @@ function pintarServicios(){
    reales de Metales Decorados. Los campos marcados como PENDIENTE no se
    inventan: se confirman con el cliente antes de publicar.
    ========================================================================== */
-const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles','Lámparas','Escaleras','Chimeneas'];
+const CATEGORIAS = ['Portones','Puertas','Rejas','Barandas','Decoración','Muebles','Lámparas','Escaleras','Chimeneas'];
 const CAT_LABEL_EN = {
-  'Todos':'All', 'Portones':'Gates', 'Puertas':'Front doors',
+  'Portones':'Gates', 'Puertas':'Front doors',
   'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture', 'Lámparas':'Lamps', 'Escaleras':'Stairs', 'Chimeneas':'Fireplaces'
 };
 function catLabel(c){ return t(c, CAT_LABEL_EN[c]); }
+
+/* Foto de portada de cada categoria en la vista inicial del catalogo. `id` es el
+   proyecto cuya primera foto se usa; `pos` ajusta el encuadre (object-position)
+   cuando la foto es vertical. Si una categoria no esta aqui se usa su primer
+   proyecto. */
+const CAT_PORTADA = {
+  'Portones':   { id:'p02' },
+  'Puertas':    { id:'p07' },
+  'Rejas':      { id:'p04' },
+  'Barandas':   { id:'p17' },
+  'Decoración': { id:'p09' },
+  'Muebles':    { id:'p49' },
+  'Lámparas':   { id:'p43', pos:'50% 62%' },
+  'Escaleras':  { id:'p35', pos:'50% 40%' },
+  'Chimeneas':  { id:'p41' }
+};
 
 /* Las fotografias provienen de las publicaciones reales de @metales_decorados01.
    Las descripciones se apoyan en los pies de foto que el propio negocio publico.
@@ -556,39 +613,110 @@ function pCampo(p, campo){
   return (idioma === 'en' && p.en && p.en[campo] != null) ? p.en[campo] : v;
 }
 
-let filtroActivo = 'Todos';
+/* Vista del catalogo: al abrir se ven solo las categorias (una portada por
+   cada una). Las fotos de los proyectos aparecen cuando la persona elige una.
+   null = vista de categorias; si no, el nombre de la categoria elegida. */
+let filtroActivo = null;
+
+function proyectosDe(cat){
+  return PROYECTOS.filter(function(p){ return p.cat === cat; });
+}
+/* Solo se muestran las categorias que tienen proyectos */
+function categoriasActivas(){
+  return CATEGORIAS.filter(function(c){ return proyectosDe(c).length > 0; });
+}
+function nProyectos(n){
+  return n + (n === 1 ? t(' proyecto', ' project') : t(' proyectos', ' projects'));
+}
+function portadaDe(cat){
+  const cfg = CAT_PORTADA[cat] || {};
+  const lista = proyectosDe(cat);
+  const p = lista.find(function(x){ return x.id === cfg.id; }) || lista[0];
+  return { archivo: p.fotos.length ? p.fotos[0] : (p.id + '-a.jpg'), pos: cfg.pos || '' };
+}
 
 function pintarFiltros(){
   const cont = document.getElementById('filtros');
   if (!cont) return;
-  cont.innerHTML = CATEGORIAS.map(function(c){
-    const n = c === 'Todos' ? PROYECTOS.length : PROYECTOS.filter(function(p){ return p.cat === c; }).length;
-    return '<button class="filtro' + (c === filtroActivo ? ' is-on' : '') + '" data-cat="' + c + '" role="tab">' +
-             catLabel(c) + '<span>' + n + '</span></button>';
-  }).join('');
+  cont.hidden = (filtroActivo === null);
+  if (filtroActivo === null){ cont.innerHTML = ''; return; }
+
+  cont.setAttribute('aria-label', t('Categorías', 'Categories'));
+  cont.innerHTML =
+    '<button class="filtro filtro--back" data-cat="">' + FLECHA_ATRAS + t('Categorías', 'Categories') + '</button>' +
+    categoriasActivas().map(function(c){
+      return '<button class="filtro' + (c === filtroActivo ? ' is-on' : '') + '" data-cat="' + c + '" ' +
+               'aria-pressed="' + (c === filtroActivo) + '">' +
+             catLabel(c) + '<span>' + proyectosDe(c).length + '</span></button>';
+    }).join('');
 
   cont.querySelectorAll('.filtro').forEach(function(b){
-    b.addEventListener('click', function(){ aplicarFiltro(b.dataset.cat); });
+    b.addEventListener('click', function(){
+      /* Volver a las categorias lleva al inicio del catalogo; cambiar de categoria no mueve la pagina */
+      aplicarFiltro(b.dataset.cat, { desplazar: !b.dataset.cat });
+    });
   });
+
+  /* En celular los botones van en una fila deslizable: se deja a la vista el activo */
+  const on = cont.querySelector('.is-on');
+  if (on) cont.scrollLeft = on.offsetLeft - (cont.clientWidth - on.offsetWidth) / 2;
 }
 
-function aplicarFiltro(cat){
-  filtroActivo = cat;
-  document.querySelectorAll('.filtro').forEach(function(b){
-    b.classList.toggle('is-on', b.dataset.cat === cat);
-  });
+function aplicarFiltro(cat, opciones){
+  filtroActivo = (cat && CATEGORIAS.indexOf(cat) >= 0) ? cat : null;
+  pintarFiltros();
   pintarCatalogo();
+  if (opciones && opciones.desplazar) irAlCatalogo();
+}
+
+/* Al cambiar de vista el alto de la pagina cambia: se lleva la pantalla al
+   principio de lo nuevo (debajo del encabezado fijo) */
+function irAlCatalogo(){
+  const ref = (filtroActivo === null)
+    ? document.querySelector('#catalogo .sec-head')
+    : document.getElementById('filtros');
+  if (!ref) return;
+  window.scrollTo({ top: Math.max(0, ref.getBoundingClientRect().top + window.pageYOffset - 110) });
 }
 
 function pintarCatalogo(){
+  const cats = document.getElementById('cats');
   const cont = document.getElementById('cat');
-  if (!cont) return;
+  const vacio = document.getElementById('cat-vacio');
+  if (!cont || !cats) return;
 
-  const lista = filtroActivo === 'Todos'
-    ? PROYECTOS
-    : PROYECTOS.filter(function(p){ return p.cat === filtroActivo; });
+  /* ---- Vista de categorias ---- */
+  if (filtroActivo === null){
+    cont.hidden = true; cont.innerHTML = ''; vacio.hidden = true;
+    cats.hidden = false;
+    cats.innerHTML = categoriasActivas().map(function(c, i){
+      const n = proyectosDe(c).length, portada = portadaDe(c), nombre = catLabel(c);
+      return '<button class="catcard rv" data-delay="' + ((i % 3) * 60) + '" data-cat="' + c + '" ' +
+               'aria-label="' + t('Ver proyectos de ', 'View projects: ') + nombre + ' (' + n + ')">' +
+        '<div class="catcard__media">' +
+          imgFoto(portada.archivo, nombre + ' — Metales Decorados', SIZES_CATEGORIAS,
+                  'data-ph="' + nombre + '"' + (portada.pos ? ' style="object-position:' + portada.pos + '"' : '')) +
+        '</div>' +
+        '<div class="catcard__body">' +
+          '<span class="catcard__n">' + nProyectos(n) + '</span>' +
+          '<h3>' + nombre + '</h3>' +
+          '<span class="catcard__ver">' + t('Ver proyectos', 'View projects') + FLECHA + '</span>' +
+        '</div></button>';
+    }).join('');
 
-  document.getElementById('cat-vacio').hidden = lista.length > 0;
+    cats.querySelectorAll('.catcard').forEach(function(b){
+      b.addEventListener('click', function(){ aplicarFiltro(b.dataset.cat, { desplazar:true }); });
+    });
+    initPlaceholders();
+    initReveal();
+    return;
+  }
+
+  /* ---- Proyectos de la categoria elegida ---- */
+  cats.hidden = true; cats.innerHTML = '';
+  cont.hidden = false;
+  const lista = proyectosDe(filtroActivo);
+  vacio.hidden = lista.length > 0;
 
   cont.innerHTML = lista.map(function(p, i){
     const hayFotos = p.fotos.length > 0;
@@ -603,8 +731,7 @@ function pintarCatalogo(){
       '<div class="proj__media">' +
         '<span class="tag">' + catLabel(p.cat) + '</span>' +
         '<span class="proj__n">' + contador + '</span>' +
-        '<img src="img/' + portada + '" alt="' + titulo + ' — Metales Decorados" loading="lazy" ' +
-             'data-ph="' + titulo + '">' +
+        imgFoto(portada, titulo + ' — Metales Decorados', SIZES_PROYECTOS, 'data-ph="' + titulo + '"') +
       '</div>' +
       '<div class="proj__body">' +
         '<span class="proj__meta">' + tipo + '</span>' +
@@ -655,7 +782,7 @@ function abrirFicha(id){
 
   document.getElementById('modal-body').innerHTML =
     '<div class="ficha__hero">' +
-      '<img src="img/' + portada + '" alt="' + titulo + '" data-ph="' + titulo + t(' — foto principal',' — main photo') + '">' +
+      imgFicha(portada, titulo, titulo + t(' — foto principal',' — main photo')) +
     '</div>' +
     '<div class="ficha__body">' +
       '<p class="ficha__cat">' + catTx + '</p>' +
@@ -669,7 +796,7 @@ function abrirFicha(id){
       (p.fotos.length > 1
         ? '<div class="ficha__fotos">' +
             p.fotos.map(function(f, i){
-              return '<div><img src="img/' + f + '" alt="' + titulo + ' ' + (i+1) + '" data-ph="' + t('Foto ','Photo ') + (i+1) + '"></div>';
+              return '<div>' + imgFoto(f, titulo + ' ' + (i+1), SIZES_MINIATURAS, 'data-ph="' + t('Foto ','Photo ') + (i+1) + '"') + '</div>';
             }).join('') +
           '</div>'
         : '') +
@@ -722,7 +849,7 @@ const I18N = {
     sv0:'What we build', sv1:'One workshop, many kinds of project',
     sv2:'From securing an entrance to the piece that defines a living room. Everything is built to each client’s measurements and design.',
     pf0:'Portfolio', pf1:'Project catalogue',
-    pf2:'Work organised by type. Open any project to see the full record and request a quote for something similar.',
+    pf2:'Choose a category to see the work. Open any project to see the full record and request a quote for something similar.',
     ctaB1:'Saw something you like?', ctaB2:'Tell us which piece caught your eye and we will prepare a quote for something similar in your space.',
     fq0:'Frequently asked questions', fq1:'Before you write to us',
     cz0:'Quote', cz1:'Tell us what you need built',
@@ -826,8 +953,9 @@ function cambiarIdioma(lang){
     const k = img.dataset.i18nPh;
     if (!(k in ORIGINAL)) ORIGINAL[k] = img.dataset.ph;
     img.dataset.ph = (lang === 'es') ? ORIGINAL[k] : (I18N.en[k] != null ? I18N.en[k] : ORIGINAL[k]);
-    if (img.previousElementSibling && img.previousElementSibling.classList.contains('ph')){
-      const span = img.previousElementSibling.querySelector('span');
+    const ref = (img.parentNode.tagName === 'PICTURE') ? img.parentNode : img;
+    if (ref.previousElementSibling && ref.previousElementSibling.classList.contains('ph')){
+      const span = ref.previousElementSibling.querySelector('span');
       if (span) span.textContent = img.dataset.ph;
     }
   });
@@ -859,8 +987,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   /* Enlaces del pie que filtran el catalogo */
-  document.querySelectorAll('[data-cat]').forEach(function(a){
-    if (a.classList.contains('filtro')) return;
+  document.querySelectorAll('a[data-cat]').forEach(function(a){
     a.addEventListener('click', function(){ aplicarFiltro(a.dataset.cat); });
   });
 

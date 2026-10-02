@@ -30,7 +30,7 @@ la página muestra la etiqueta `PENDIENTE CONFIRMAR CON CLIENTE`.
 | Puertas principales | ✅ | Aparece en la bio de Instagram — **añadido a la propuesta** |
 | Rejas | ✅ | |
 | Pasamanos / barandas | ✅ | La bio dice "barandas"; el directorio dice "pasamanos" |
-| Mobiliario en metal | ⏸️ **Retirado del sitio** | Sí lo ofrecen (el directorio público lista juegos de sala, comedor, mesas, bancos y estantes), pero **no hay ni una fotografía**, así que se quitó de la web en lugar de mostrar un hueco. Se vuelve a poner apenas manden fotos. |
+| Mobiliario en metal | 🟡 **Solo como categoría "Muebles" del catálogo** | Ya hay proyectos con fotos reales (juegos de comedor, sala, banca, cama). **Falta decidir si se activa también como servicio** (tarjeta en "Qué fabricamos", opción en el cotizador y en el asistente): necesita una foto `servicio-mobiliario.jpg`. |
 | Decoración (lámparas, candelabros) | ✅ | |
 | Proyectos a medida | ✅ | |
 | **CORTE LÁSER / CNC** | 🔶 **Pendiente clave** | La evidencia es fuerte y es toda suya: (1) su bio dice *"Especialistas en Hierro forjado y **corte cnc láser**"*; (2) usan los hashtags **#lásercostarica**, **#cnc** y **#cncplasma** en sus propias publicaciones; (3) varias fotos del portafolio **son piezas cortadas en láser/CNC** (la puerta del pavo real, las puertas en lámina decorada, los paneles del taller). Aun así **no se publicó como servicio**, según lo indicado. La sección está construida y desactivada. **Preguntar: ¿lo ofrecen comercialmente a terceros, o solo lo usan para fabricar sus propias piezas? ¿Qué materiales y espesores?** Para activarla: `MD_LASER = true` en `amedida/js/main.js`. |
@@ -54,7 +54,7 @@ la página muestra la etiqueta `PENDIENTE CONFIRMAR CON CLIENTE`.
 ## 4. Contenido a solicitar
 
 - [ ] **Fotografías originales en alta resolución.** Las que están en el sitio son obras reales suyas, pero salieron de capturas de Instagram y están recomprimidas. Pedir los archivos originales del celular y reemplazarlos con el mismo nombre (ver `amedida/img/LEEME.txt`).
-- [ ] **Fotos de MOBILIARIO.** El servicio se retiró del sitio por falta de fotos. Si mandan aunque sean 2 o 3 (un juego de comedor, una mesa, un banco), se reactiva: la tarjeta de servicio, la categoría del catálogo y las opciones del cotizador y del asistente.
+- [x] **Fotos de MOBILIARIO.** Ya llegaron y están en la categoría "Muebles" del catálogo. Queda pendiente que confirmen si quieren activarlo también como servicio (ver la tabla de servicios, arriba).
 - [ ] **Logo** en vector o PNG con fondo transparente. Ahora se usa un monograma "MD" provisional.
 - [ ] **Testimonios reales** autorizados por los clientes, o el enlace a las reseñas de Google.
 - [ ] Datos de cada proyecto del catálogo: ubicación, material, tipo de trabajo.

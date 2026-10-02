@@ -18,3 +18,11 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Las copias livianas de las fotos llevan ?v=huella en su URL (la pone
+# herramientas/optimizar-fotos.py): si la foto cambia, la URL cambia. Por eso se
+# pueden guardar un año en el navegador y las visitas siguientes no las vuelven a bajar.
+[[headers]]
+  for = "/img/web/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

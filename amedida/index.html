@@ -34,8 +34,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=navfix1">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/styles.css?v=cat1">
+<link rel="stylesheet" href="css/site.css?v=cat1">
 
 <!-- Datos estructurados. Solo lo confirmado.
      openingHours, priceRange, email y direccion exacta se agregan cuando el
@@ -107,7 +107,11 @@
 <!-- =========================== HERO =========================== -->
 <section class="hero" id="inicio">
   <div class="hero__bg">
-    <img src="img/hero.jpg" alt="Proyecto en metal fabricado por Metales Decorados" data-ph="Fotografía principal — proyecto destacado, horizontal" data-i18n-ph="heroPh">
+    <picture>
+      <source type="image/webp" media="(max-width:960px)" srcset="img/web/hero-1280.webp?v=e1494cb2">
+      <source type="image/webp" srcset="img/web/hero-1600.webp?v=e1494cb2">
+      <img src="img/hero.jpg" alt="Proyecto en metal fabricado por Metales Decorados" fetchpriority="high" decoding="async" data-ph="Fotografía principal — proyecto destacado, horizontal" data-i18n-ph="heroPh">
+    </picture>
   </div>
   <div class="wrap hero__in">
     <p class="eyebrow rv" data-i18n="heroEyebrow">Taller de fabricación en metal · Guadalupe, Goicoechea</p>
@@ -165,7 +169,7 @@
         <p class="muted"><span class="pend" data-i18n="pendCliente">PENDIENTE CONFIRMAR CON CLIENTE</span> <span data-i18n="laserMuted">Materiales, espesores, tamaño máximo de lámina y si el servicio se ofrece a terceros.</span></p>
         <a class="btn btn--primary btn--sm" data-wa="Hola, quisiera consultar por el servicio de corte láser." data-i18n="laserBtn">Consultar</a>
       </div>
-      <div class="laser__media"><img src="img/servicio-laser.jpg" alt="Corte láser" data-ph="Pieza cortada en láser" data-i18n-ph="laserPh"></div>
+      <div class="laser__media"><img src="img/servicio-laser.jpg" alt="Corte láser" loading="lazy" decoding="async" data-ph="Pieza cortada en láser" data-i18n-ph="laserPh"></div>
     </div>
 
   </div>
@@ -178,11 +182,13 @@
       <div class="rule"></div>
       <p class="eyebrow" data-i18n="pf0">Portafolio</p>
       <h2 class="h-lg" data-i18n="pf1">Catálogo de proyectos</h2>
-      <p class="lede" style="margin-top:16px" data-i18n="pf2">Trabajos organizados por tipo. Abrí cualquiera para ver la ficha completa y pedir una cotización de algo similar.</p>
+      <p class="lede" style="margin-top:16px" data-i18n="pf2">Elegí una categoría para ver los trabajos. Abrí cualquiera para ver la ficha completa y pedir una cotización de algo similar.</p>
     </div>
 
-    <div class="filtros rv" id="filtros" role="tablist"><!-- se genera desde js/main.js --></div>
-    <div class="cat" id="cat"><!-- se genera desde js/main.js --></div>
+    <!-- Vista inicial: una portada por categoria. Al elegir una, aparecen sus proyectos. -->
+    <div class="cats" id="cats"><!-- se genera desde js/main.js --></div>
+    <div class="filtros" id="filtros" role="group" hidden><!-- se genera desde js/main.js --></div>
+    <div class="cat" id="cat" hidden><!-- se genera desde js/main.js --></div>
     <p class="cat__vacio" id="cat-vacio" hidden data-i18n="catVacio">No hay proyectos en esta categoría todavía.</p>
 
     <div class="cta-band rv" style="margin-top:60px">
@@ -223,7 +229,10 @@
         </div>
       </div>
       <div class="medida__media rv" data-delay="80">
-        <img src="img/a-medida.jpg" alt="Proceso de fabricación en el taller" data-ph="Foto del taller o del proceso de fabricación — vertical" data-i18n-ph="medidaPh">
+        <picture>
+          <source type="image/webp" srcset="img/web/a-medida-480.webp?v=ccdf1bb6 480w, img/web/a-medida-960.webp?v=ccdf1bb6 960w" sizes="(max-width:900px) 100vw, 480px">
+          <img src="img/a-medida.jpg" alt="Proceso de fabricación en el taller" loading="lazy" decoding="async" data-ph="Foto del taller o del proceso de fabricación — vertical" data-i18n-ph="medidaPh">
+        </picture>
       </div>
     </div>
   </div>
@@ -436,8 +445,9 @@
   </div>
 </div>
 
-<script src="js/core.js?v=i18n5"></script>
-<script src="js/main.js?v=i18n5"></script>
+<script src="js/core.js?v=cat1"></script>
+<script src="js/fotos-web.js?v=cat1"></script>
+<script src="js/main.js?v=cat1"></script>
 <script src="js/cotizador.js?v=i18n5"></script>
 <script src="js/chatbot.js?v=i18n5"></script>
 </body>

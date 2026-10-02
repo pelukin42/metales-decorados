@@ -12,43 +12,54 @@ Instagram recomprime las imagenes, asi que se pierde nitidez. Antes de
 publicar el sitio conviene pedirle al cliente las fotos originales del
 celular y reemplazarlas con el mismo nombre de archivo.
 
-COMO REEMPLAZAR
----------------
-Basta con copiar la foto nueva encima, con el mismo nombre. No hay que tocar
-ni una linea de codigo. Si un archivo falta, la pagina muestra un marcador
-que dice "FOTOGRAFIA PENDIENTE" con el nombre de lo que va ahi.
+COMO AGREGAR O REEMPLAZAR UNA FOTO
+----------------------------------
+1. Copiar la foto a esta carpeta (img/) con el nombre exacto. Aparece sola, sin tocar
+   codigo. Si un archivo falta, la pagina muestra un marcador que dice "FOTOGRAFIA
+   PENDIENTE" con el nombre de lo que va ahi.
+2. Correr   python herramientas/optimizar-fotos.py   (necesita:  pip install pillow).
+   Crea las copias livianas de la carpeta img/web/ y actualiza js/fotos-web.js.
+   Si se REEMPLAZA una foto y no se corre, las tarjetas siguen mostrando la anterior.
+3. Subir tambien lo que cambie en img/web/, js/fotos-web.js e index.html.
 
 Formato: .jpg  |  Ancho recomendado: 1600 px  |  Peso ideal: menos de 400 KB
+
+
+FOTOS LIVIANAS (carpeta img/web/ — GENERADA, no editar a mano)
+---------------------------------------------------------------
+Son copias WebP de las fotos de aqui, en 480 y 960 px (la portada: 1280 y 1600 px). Las
+tarjetas, miniaturas y portada piden la que calza con la pantalla; la foto original (.jpg)
+se sigue usando en la ficha en pantallas de alta densidad. Las fotos de menos de 960 px de
+ancho ya son livianas y se usan tal cual. Para revisar que todo este al dia:
+   python herramientas/optimizar-fotos.py --revisar
 
 
 LO QUE FALTA
 ------------
 (nada pendiente por ahora)
 
-NOTA: el servicio de MOBILIARIO se retiro del sitio por falta de fotografias.
-      Si el cliente manda fotos de juegos de sala, comedor, mesas o bancos,
-      se vuelve a activar. Ver el README para los pasos.
+NOTA: el servicio de MOBILIARIO todavia no es una tarjeta de servicio, ni opcion del
+      cotizador y del asistente. Los muebles ya estan en el catalogo, en la categoria
+      "Muebles". Ver el README para activarlo del todo.
 
 
 LO QUE YA ESTA
 --------------
 hero.jpg                  Porton con vista al valle (foto de portada)
-og.jpg                    Version para compartir el enlace (1200 x 630)
+og.jpg                    Version para compartir el enlace (1200 x 630). No se aligera.
 a-medida.jpg              Baranda en proceso de instalacion (seccion "a medida")
 
 servicio-portones.jpg     servicio-puertas.jpg      servicio-rejas.jpg
 servicio-pasamanos.jpg    servicio-decoracion.jpg   servicio-laser.jpg
 
 CATALOGO
-proyecto-01-a/b.jpg       Porton de entrada en hierro forjado
-proyecto-02-a.jpg         Porton vehicular corredizo
-proyecto-03-a.jpg         Porton de dos hojas con puerta peatonal
-proyecto-04-a.jpg         Porton y rejas en hierro forjado
-proyecto-05-a.jpg         Puerta principal con diseno calado (pavo real)
-proyecto-06-a/b/c/d.jpg   Puertas principales en lamina decorada
-proyecto-07-a.jpg         Puerta principal en hierro forjado con vidrio
-proyecto-08-a.jpg         Baranda de escalera interna
-proyecto-09-a.jpg         Paneles decorativos y lamparas
+proyecto-NN-x.jpg         NN = numero del proyecto, x = a, b, c... si tiene varias fotos.
+                          Los proyectos (categoria, titulo, resumen y fotos) estan en la
+                          lista PROYECTOS de js/main.js. Categorias: Portones, Puertas,
+                          Rejas, Barandas, Decoracion, Muebles, Lamparas, Escaleras y
+                          Chimeneas. Al abrir el catalogo solo se ve la portada de cada
+                          categoria (CAT_PORTADA en js/main.js); las fotos de los
+                          proyectos aparecen al elegir una categoria.
 
 Para agregar, quitar o renombrar proyectos: abrir js/main.js y editar la
 lista PROYECTOS. Cada entrada define categoria, titulo, resumen y fotos.
