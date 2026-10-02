@@ -139,10 +139,10 @@ function pintarServicios(){
    reales de Metales Decorados. Los campos marcados como PENDIENTE no se
    inventan: se confirman con el cliente antes de publicar.
    ========================================================================== */
-const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles','Lámparas','Escaleras'];
+const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles','Lámparas','Escaleras','Chimeneas'];
 const CAT_LABEL_EN = {
   'Todos':'All', 'Portones':'Gates', 'Puertas':'Front doors',
-  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture', 'Lámparas':'Lamps', 'Escaleras':'Stairs'
+  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture', 'Lámparas':'Lamps', 'Escaleras':'Stairs', 'Chimeneas':'Fireplaces'
 };
 function catLabel(c){ return t(c, CAT_LABEL_EN[c]); }
 
@@ -444,6 +444,38 @@ const PROYECTOS = [
     fotos:['proyecto-38-a.jpg'],
     en:{ titulo:'Wrought iron bench with cut-out back and woven seat',
       resumen:'Two-seat bench in black iron, with a cut-out back of circles and scrolls, curved arms and a woven seat.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p39', cat:'Chimeneas',  titulo:'Juego de accesorios para chimenea en forja',
+    resumen:'Juego de accesorios para chimenea en hierro forjado, con soporte de remates esféricos, barras torcidas y base de tres patas.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-39-a.jpg'],
+    en:{ titulo:'Wrought iron fireplace tool set',
+      resumen:'Wrought iron fireplace tool set, with a stand topped with ball finials, twisted bars and a three-legged base.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p40', cat:'Chimeneas',  titulo:'Chimenea de piedra con puerta de hierro y accesorios',
+    resumen:'Chimenea de piedra con puerta de hierro de remate en arco, y juego de accesorios de forja al lado.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-40-a.jpg'],
+    en:{ titulo:'Stone fireplace with iron door and tool set',
+      resumen:'Stone fireplace with an arched iron door, and a wrought iron tool set beside it.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p41', cat:'Chimeneas',  titulo:'Puertas de chimenea con pinos calados',
+    resumen:'Puertas dobles para chimenea de piedra de río, con marco remachado y siluetas de pinos cortadas en lámina.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-41-a.jpg'],
+    en:{ titulo:'Fireplace doors with cut-out pine trees',
+      resumen:'Double doors for a river-stone fireplace, with a riveted frame and pine tree silhouettes cut from sheet metal.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p42', cat:'Chimeneas',  titulo:'Puertas de chimenea con malla y acabado martillado',
+    resumen:'Puertas dobles en arco para chimenea, con marco martillado, remaches, malla metálica y manijas de forja.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-42-a.jpg'],
+    en:{ titulo:'Fireplace doors with mesh and hammered finish',
+      resumen:'Arched double doors for a fireplace, with a hammered frame, rivets, metal mesh and forged handles.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
