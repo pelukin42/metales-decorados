@@ -92,9 +92,12 @@ aluminio, lámina), ubicación ni fechas que el cliente no haya confirmado. Eso 
 ## Mapa
 
 La sección de contacto muestra un mapa de Google cargado desde `MD.mapsEmbed` (`assets/core.js`),
-diferido (`loading="lazy"`) para no gastar datos hasta que se llega al contacto. Mientras no haya
-`MD.direccionExacta` confirmada, el mapa solo muestra la **zona** (Guadalupe, Goicoechea) y lleva el
-rótulo "Zona del taller"; no poner un pin ni una dirección que el cliente no haya confirmado.
+diferido (`loading="lazy"`) para no gastar datos hasta que se llega al contacto. Apunta a la
+**ficha del negocio en Google Maps** ("Metales Decorados", taller de metalurgia; se reconoce por su
+teléfono +506 8850 9207) mediante su `cid`. Si algún día se usa un mapa que no sea el del lugar
+exacto, poner `MD.mapaExacto = false` y aparece el rótulo "Zona del taller". No escribir una
+dirección en texto que el cliente no haya confirmado: la dirección que muestra el mapa es la de su
+propia ficha de Google.
 
 ## Banderas de servicios
 
@@ -122,8 +125,9 @@ python herramientas/generar-pdf.py  # catálogo + tarjeta de reseñas (o: ... ca
 python herramientas/optimizar-fotos.py  # versiones livianas de las fotos (WebP)
 ```
 
-El QR de reseñas está pendiente: no existe perfil de Google Business todavía. Al
-crearlo, pegar el enlace en `URL_RESENA` de `herramientas/generar-pdf.py` y regenerar.
+El QR de reseñas está pendiente: falta el enlace de reseñas. Ya existe una ficha en Google Maps
+(ver "Mapa"); confirmar con el cliente que la administra y luego pegar el enlace en `URL_RESENA`
+de `herramientas/generar-pdf.py` y regenerar.
 
 ## Antes de publicar
 

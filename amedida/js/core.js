@@ -25,10 +25,13 @@ const MD = {
   email: '',                        // no inventar correo
   direccionExacta: '',              // ej: '150 m sur de ... , Barrio Pilar'
   horario: '',                      // ej: 'Lun a Vie 8:00 - 17:00'
-  // Mapa de Google (URL del iframe). Hoy muestra solo la ZONA confirmada (Guadalupe, Goicoechea).
-  // Al confirmar la direccion exacta: llenar direccionExacta y pegar aqui la URL de
-  // Google Maps > Compartir > Insertar un mapa (el src del iframe). El rotulo "zona" desaparece solo.
-  mapsEmbed: 'https://www.google.com/maps?q=Guadalupe%2C+Goicoechea%2C+San+Jos%C3%A9%2C+Costa+Rica&z=14&hl=es&output=embed',
+  // Mapa de Google (URL del iframe). Apunta a la ficha del negocio en Google Maps
+  // ("Metales Decorados", taller de metalurgia, tel. +506 8850 9207; se identifica por su cid,
+  // que no cambia aunque cambie el texto). mapaExacto = true porque el pin es el de esa ficha.
+  // Si en algun momento se cambia por un mapa de la zona, poner mapaExacto en false: aparece
+  // el rotulo "Zona del taller".
+  mapsEmbed: 'https://www.google.com/maps?cid=17291793771946771893&hl=es&output=embed',
+  mapaExacto: true,
   googleBusiness: '',               // URL del perfil real de Google Business
   facebook: '',
 
@@ -153,14 +156,14 @@ function initReveal(){
 /* Rellena datos del negocio marcados con data-md="telefono" etc. */
 function initDatos(){
   /* Mapa de Google: solo si hay URL en MD.mapsEmbed. loading="lazy" evita bajar el mapa
-     (pesado) hasta que la persona llega al contacto. Sin direccion exacta confirmada, un
-     rotulo aclara que el mapa muestra la zona y no la puerta del taller. */
+     (pesado) hasta que la persona llega al contacto. Si el mapa no apunta al lugar exacto del
+     negocio (mapaExacto = false), un rotulo aclara que muestra la zona. */
   const caja = document.querySelector('.contact__map');
   if (caja && MD.mapsEmbed){
     caja.innerHTML =
       '<iframe src="' + MD.mapsEmbed + '" title="Mapa de Google: ' + MD.ciudad + '" ' +
         'loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
-      (MD.direccionExacta ? '' :
+      (MD.mapaExacto ? '' :
         '<span class="contact__zona" data-i18n="contactMapZona">Zona del taller · Ubicación exacta por confirmar</span>');
   }
   document.querySelectorAll('[data-md]').forEach(function(el){

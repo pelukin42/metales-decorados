@@ -18,7 +18,7 @@ la página muestra la etiqueta `PENDIENTE CONFIRMAR CON CLIENTE`.
 | **Horario de atención** | ⬜ Pendiente | No se publica hasta confirmarlo. |
 | **Facebook / otras redes** | ⬜ Pendiente | Existe una página de Facebook con nombre similar; verificar si es la misma empresa. |
 | **Perfil de Google Business** | 🔴 **No existe** | El negocio **todavía no tiene perfil**. Es lo de mayor impacto de toda la propuesta: para un taller local, la ficha de Google trae más clientes que el sitio web. Hay que crearla, verificarla (Google manda un código) y llenarla. De ahí sale el enlace de reseñas que alimenta el QR. En el sitio se quitó la nota "Para activar" y el botón "Ver perfil en Google" (quedaban con etiquetas de pendiente visibles al público); la sección de reseñas queda solo con el mensaje genérico hasta que exista el perfil. Al crear y verificar el perfil: volver a agregar en `amedida/index.html` (sección `<div class="google rv">`) el botón "Ver perfil en Google" con el enlace real, y sumar la calificación/reseñas si se quiere mostrarlas. |
-| **Mapa** | 🟡 Publicado solo de la zona | Muestra Guadalupe, Goicoechea (sin pin en el taller). Al confirmar la dirección: llenar `direccionExacta` y pegar en `mapsEmbed` (ambos en `assets/core.js`) el enlace de Google Maps > Compartir > Insertar un mapa. El rótulo "Zona del taller" se quita solo. |
+| **Mapa** | ✅ Publicado | Apunta a la ficha de Google Maps "Metales Decorados" (taller de metalurgia), cuyo teléfono coincide con el del sitio. Su dirección en la ficha es solo "506, San José, Guadalupe": **confirmar con el cliente que es correcta y que ellos administran la ficha**. |
 
 ---
 
@@ -96,3 +96,14 @@ Al crearlo: pegar el enlace en `URL_RESENA` dentro de `herramientas/generar-pdf.
 > No se publicó ningún precio, material, garantía, cobertura, plazo, correo ni testimonio
 > que no estuviera confirmado. Tampoco se usaron frases como "los mejores de Costa Rica",
 > "calidad #1" o "resultados garantizados", ni fotografías de trabajos de otras empresas.
+
+---
+
+## Hallazgo: ya existe una ficha del negocio en Google Maps
+
+Se encontró la ficha pública **"Metales Decorados"** (taller de metalurgia, +506 8850 9207, pin en
+Guadalupe) con **5 estrellas y 3 reseñas**, y horario **lun a vie 7:00–17:30, sáb y dom cerrado**.
+Esto contradice la nota de que no hay perfil de Google. **No se publicó nada de esto** (ni la
+calificación, ni el horario, ni el enlace de reseñas) hasta que el cliente confirme que la ficha es
+suya y que esos datos son correctos. Al confirmarlo: llenar `google` y `horario` en `MD`, y poner el
+enlace de reseñas en `URL_RESENA` de `herramientas/generar-pdf.py` y regenerar la tarjeta.
