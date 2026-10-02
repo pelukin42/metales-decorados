@@ -492,6 +492,22 @@ function botAbrir(){
   }
 }
 
+/* Abre el asistente y entra directo al flujo pedido ("cotizar" o "preguntas"), como si la
+   persona hubiera tocado esa opcion del saludo (el saludo y la presentacion como asistente
+   virtual se muestran igual). Lo usa la guia de ayuda (js/guia.js). */
+function botAbrirEn(ruta){
+  const yaAbierto = BOT.abierto;
+  botAbrir();
+  if (yaAbierto) return;                       // ya habia una conversacion: no se la interrumpe
+  const indice = (ruta === 'preguntas') ? 1 : 0;
+  let intentos = 0;
+  const espera = setInterval(function(){
+    const op = document.querySelectorAll('#bot-ops .bot__op')[indice];
+    if (op && BOT.paso === 'inicio'){ clearInterval(espera); op.click(); }
+    else if (++intentos > 40){ clearInterval(espera); }
+  }, 150);
+}
+
 function botCerrarVentana(){
   document.getElementById('bot').hidden = true;
   document.getElementById('bot-btn').hidden = false;

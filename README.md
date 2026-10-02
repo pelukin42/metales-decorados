@@ -44,6 +44,7 @@ amedida/                Sitio — Plan Premium
   js/fotos-web.js        (generado) lista de fotos que tienen versión liviana
   js/cotizador.js        cotizador avanzado en 4 pasos
   js/chatbot.js          asistente virtual
+  js/guia.js             guía de ayuda: a los 30 s lleva al asistente o al cotizador
   img/LEEME.txt          qué fotos hacen falta y cómo se llaman
   img/web/               (generado) copias WebP livianas de las fotos
 ```

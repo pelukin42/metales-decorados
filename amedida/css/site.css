@@ -336,6 +336,41 @@
   .bot{ right:8px; left:8px; bottom:8px; width:auto; height:calc(100vh - 16px); border-radius:14px; }
 }
 
+/* ---------- Guia de ayuda (aparece a los 30 s si la persona no ha empezado nada) ---------- */
+.guia{
+  /* a la derecha, encima de los botones flotantes: no tapa el texto de la portada y queda junto al asistente */
+  position:fixed; right:22px; bottom:156px; z-index:80;
+  width:350px; max-width:calc(100vw - 32px); padding:20px 20px 14px;
+  background:var(--bg-2); border:1px solid rgba(200,160,74,.35); border-radius:18px;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.9);
+  animation:guiaIn .45s var(--ease);
+}
+@keyframes guiaIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+.guia .eyebrow{ margin:0 0 6px; }
+.guia h3{ font-size:1.18rem; margin:0 0 7px; padding-right:26px; }
+.guia p:not(.eyebrow){ margin:0 0 14px; color:var(--tx-2); font-size:13.5px; line-height:1.5; }
+.guia__x{
+  position:absolute; top:10px; right:12px; width:30px; height:30px; border-radius:50%;
+  background:none; border:0; color:var(--tx-3); font-size:22px; line-height:1;
+}
+.guia__x:hover{ color:var(--brass); }
+.guia__ops{ display:flex; flex-direction:column; gap:8px; }
+.guia__op{
+  text-align:left; padding:12px 14px; border-radius:12px; color:var(--tx);
+  border:1px solid var(--line); background:rgba(255,255,255,.02);
+  transition:border-color .25s, background .25s, transform .25s var(--ease);
+}
+.guia__op:hover{ border-color:rgba(200,160,74,.55); background:var(--brass-glow); transform:translateY(-1px); }
+.guia__op b{ display:block; font-size:14px; font-weight:600; }
+.guia__op small{ display:block; margin-top:2px; color:var(--tx-3); font-size:12px; }
+.guia__pie{ display:flex; justify-content:space-between; margin-top:10px; }
+.guia__pie button{ background:none; border:0; padding:6px 2px; color:var(--tx-3); font-size:12.5px; }
+.guia__pie button:hover{ color:var(--brass); }
+@media (max-width:600px){
+  /* encima de los botones flotantes (asistente y WhatsApp), que van a la derecha */
+  .guia{ left:12px; right:12px; bottom:164px; width:auto; max-width:none; }
+}
+
 /* ---------- Contacto ---------- */
 .contact{ display:grid; grid-template-columns:1fr 1.15fr; gap:34px; }
 @media (max-width:900px){ .contact{ grid-template-columns:1fr; } }

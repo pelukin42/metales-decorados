@@ -103,6 +103,17 @@ eligen en `CAT_PORTADA` de `amedida/js/main.js`.
 Los textos de los proyectos describen solo lo que se ve: no afirmar material (hierro, forja,
 aluminio, lámina), ubicación ni fechas que el cliente no haya confirmado. Eso va en `PENDIENTE`.
 
+## Guía de ayuda (wizard de 30 segundos)
+
+`amedida/js/guia.js`: si la persona lleva 30 s con la página a la vista y todavía no empezó nada,
+aparece una tarjeta (abajo a la derecha, sobre los botones flotantes) que pregunta qué quiere
+hacer. Paso 1: pedir cotización / tengo una pregunta / solo ver trabajos. Si elige cotizar, paso 2:
+**asistente virtual** (se abre y entra al flujo de cotizar, vía `botAbrirEn()` de `chatbot.js`) o
+**cotizador** (baja a `#cotizar`). Reglas: una sola vez por visita (`sessionStorage`), no es modal, se
+cierra con la X, Esc o "Ahora no"; no aparece si ya abrió el asistente, tocó el cotizador o un botón
+de WhatsApp, ni mientras mira una ficha o el cotizador; el tiempo solo cuenta con la pestaña visible.
+Los textos (ES/EN) están en el objeto `G` del archivo; no decir precios ni plazos.
+
 ## Mapa
 
 La sección de contacto muestra un mapa de Google cargado desde `MD.mapsEmbed` (`assets/core.js`),

@@ -1042,6 +1042,7 @@ function cambiarIdioma(lang){
   if (fichaActual) abrirFicha(fichaActual);
   if (typeof czPintar === 'function' && document.getElementById('wz-form')) czPintar();
   if (typeof botRepintar === 'function') botRepintar();
+  if (typeof guiaRepintar === 'function') guiaRepintar();
 }
 
 /* -------------------------------------------------------------------------- */
