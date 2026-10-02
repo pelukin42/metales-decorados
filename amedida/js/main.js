@@ -139,10 +139,10 @@ function pintarServicios(){
    reales de Metales Decorados. Los campos marcados como PENDIENTE no se
    inventan: se confirman con el cliente antes de publicar.
    ========================================================================== */
-const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles'];
+const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles','Lámparas'];
 const CAT_LABEL_EN = {
   'Todos':'All', 'Portones':'Gates', 'Puertas':'Front doors',
-  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture'
+  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture', 'Lámparas':'Lamps'
 };
 function catLabel(c){ return t(c, CAT_LABEL_EN[c]); }
 
@@ -316,6 +316,46 @@ const PROYECTOS = [
     fotos:['proyecto-22-a.jpg'],
     en:{ titulo:'Rectangular glass-top table with iron chairs',
       resumen:'Rectangular table with a glass top on a curved iron base, with grid-back chairs.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p23', cat:'Lámparas',   titulo:'Lámpara colgante de forja con brazos en espiral',
+    resumen:'Lámpara colgante en hierro forjado con base calada de volutas y brazos que sostienen los focos, acabado claro.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-23-a.jpg'],
+    en:{ titulo:'Wrought iron pendant light with scrolled arms',
+      resumen:'Wrought iron pendant light with a cut-out scrollwork base and arms holding the bulbs, in a light finish.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p24', cat:'Lámparas',   titulo:'Lámparas colgantes doradas para salón',
+    resumen:'Tres lámparas colgantes de brazos curvos con portavelas, en acabado dorado, instaladas en un salón de techo alto.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-24-a.jpg'],
+    en:{ titulo:'Gold pendant lights for a hall',
+      resumen:'Three pendant lights with curved arms and candle holders, in a gold finish, installed in a high-ceilinged hall.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p25', cat:'Lámparas',   titulo:'Lámpara de forja negra para techo de madera',
+    resumen:'Lámpara colgante en hierro forjado negro, con volutas y brazos con focos, sobre techo de vigas de madera.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-25-a.jpg'],
+    en:{ titulo:'Black wrought iron light for a wood ceiling',
+      resumen:'Black wrought iron pendant light with scrolls and bulb arms, under a timber-beam ceiling.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p26', cat:'Lámparas',   titulo:'Farol de hierro con vidrio',
+    resumen:'Farol colgante en hierro con puerta de vidrio y soporte con volutas, para pared o corredor.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-26-a.jpg'],
+    en:{ titulo:'Iron lantern with glass',
+      resumen:'Hanging iron lantern with a glass door and scrolled bracket, for a wall or corridor.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p27', cat:'Lámparas',   titulo:'Lámpara colgante de brazos en espiral',
+    resumen:'Lámpara colgante en hierro forjado con brazos en espiral y remates de volutas, en acabado claro envejecido.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-27-a.jpg'],
+    en:{ titulo:'Pendant light with spiral arms',
+      resumen:'Wrought iron pendant light with spiral arms and scroll finials, in an aged light finish.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
