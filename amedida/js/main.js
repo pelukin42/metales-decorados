@@ -356,6 +356,46 @@ const PROYECTOS = [
     fotos:['proyecto-27-a.jpg'],
     en:{ titulo:'Pendant light with spiral arms',
       resumen:'Wrought iron pendant light with spiral arms and scroll finials, in an aged light finish.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p28', cat:'Lámparas',   titulo:'Lámpara colgante de forja de gran formato',
+    resumen:'Lámpara colgante de gran formato en hierro forjado negro, con aros, volutas y remates de hoja, bajo un techo de madera.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-28-a.jpg'],
+    en:{ titulo:'Large-format wrought iron pendant light',
+      resumen:'Large-format pendant light in black wrought iron, with rings, scrolls and leaf finials, under a wood ceiling.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p29', cat:'Lámparas',   titulo:'Lámpara colgante de dos niveles con cenefa calada',
+    resumen:'Lámpara colgante de dos niveles en hierro forjado, con aros calados con cenefa y brazos con portavelas, sobre una sala amplia.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-29-a.jpg'],
+    en:{ titulo:'Two-tier pendant light with cut-out trim',
+      resumen:'Two-tier wrought iron pendant light with patterned rings and candle-holder arms, over a large living room.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p30', cat:'Lámparas',   titulo:'Lámparas colgantes de cadenas para techo abovedado',
+    resumen:'Lámparas colgantes de forja con cadenas, aros calados y brazos con portavelas, instaladas bajo un techo abovedado de madera.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-30-a.jpg'],
+    en:{ titulo:'Chain-hung pendant lights for a vaulted ceiling',
+      resumen:'Wrought iron pendant lights with chains, patterned rings and candle-holder arms, installed under a vaulted wood ceiling.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p31', cat:'Lámparas',   titulo:'Farol de pared con vidrio esmerilado',
+    resumen:'Farol de pared en hierro negro con vidrio esmerilado y marco cuadriculado, instalado en el corredor de una casa.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-31-a.jpg'],
+    en:{ titulo:'Wall lantern with frosted glass',
+      resumen:'Wall lantern in black iron with frosted glass and a gridded frame, installed on a home corridor.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p32', cat:'Lámparas',   titulo:'Farol de poste sobre columna de piedra',
+    resumen:'Farol en hierro negro con vidrio esmerilado, montado sobre la columna de piedra de un acceso.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-32-a.jpg'],
+    en:{ titulo:'Post lantern on a stone column',
+      resumen:'Lantern in black iron with frosted glass, mounted on the stone column of an entrance.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
