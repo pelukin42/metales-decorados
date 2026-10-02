@@ -32,7 +32,8 @@ function botNoSeTx(){ return idioma === 'en' ? BOT_NO_SE_EN : BOT_NO_SE; }
    guardado en BOT.datos siempre queda en espanol (canonico); solo cambia
    la etiqueta que se muestra en pantalla y en el mensaje final. */
 const BOT_TIPO_EN = { 'Portón':'Gate', 'Puerta principal':'Front door', 'Rejas':'Window bars',
-  'Barandas':'Railings', 'Decoración':'Decor', 'Otro':'Other' };
+  'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture', 'Lámparas':'Lamps',
+  'Escaleras':'Stairs', 'Chimeneas':'Fireplaces', 'Otro':'Other' };
 const BOT_LUGAR_EN = { 'Casa':'Home', 'Negocio':'Business', 'Otro':'Other' };
 function botTipoTx(v){ return (idioma === 'en' && BOT_TIPO_EN[v]) ? BOT_TIPO_EN[v] : v; }
 function botLugarTx(v){ return (idioma === 'en' && BOT_LUGAR_EN[v]) ? BOT_LUGAR_EN[v] : v; }
@@ -288,7 +289,7 @@ function botQue(){
   botEscribiendo(450, function(){
     botDecir(bt('quePregunta'));
     botOpciones(
-      ['Portón','Puerta principal','Rejas','Barandas','Decoración','Otro']
+      ['Portón','Puerta principal','Rejas','Barandas','Decoración','Muebles','Lámparas','Escaleras','Chimeneas','Otro']
         .map(function(v){
           return { t:botTipoTx(v), fn:function(){ BOT.datos.tipo = v; botLugar(); } };
         })

@@ -30,7 +30,7 @@ la página muestra la etiqueta `PENDIENTE CONFIRMAR CON CLIENTE`.
 | Puertas principales | ✅ | Aparece en la bio de Instagram — **añadido a la propuesta** |
 | Rejas | ✅ | |
 | Pasamanos / barandas | ✅ | La bio dice "barandas"; el directorio dice "pasamanos" |
-| Mobiliario en metal | 🟡 **Solo como categoría "Muebles" del catálogo** | Ya hay proyectos con fotos reales (juegos de comedor, sala, banca, cama). **Falta decidir si se activa también como servicio** (tarjeta en "Qué fabricamos", opción en el cotizador y en el asistente): necesita una foto `servicio-mobiliario.jpg`. |
+| Mobiliario en metal | 🟡 **Solo como categoría "Muebles" del catálogo** | Ya hay proyectos con fotos reales (juegos de comedor, sala, banca, cama). Ya aparece en el cotizador, el asistente, el pie y el catálogo en PDF. **Falta decidir si se activa también la tarjeta de servicio** en "Qué fabricamos": necesita una foto `servicio-mobiliario.jpg`. |
 | Decoración (lámparas, candelabros) | ✅ | |
 | Proyectos a medida | ✅ | |
 | **CORTE LÁSER / CNC** | 🔶 **Pendiente clave** | La evidencia es fuerte y es toda suya: (1) su bio dice *"Especialistas en Hierro forjado y **corte cnc láser**"*; (2) usan los hashtags **#lásercostarica**, **#cnc** y **#cncplasma** en sus propias publicaciones; (3) varias fotos del portafolio **son piezas cortadas en láser/CNC** (la puerta del pavo real, las puertas en lámina decorada, los paneles del taller). Aun así **no se publicó como servicio**, según lo indicado. La sección está construida y desactivada. **Preguntar: ¿lo ofrecen comercialmente a terceros, o solo lo usan para fabricar sus propias piezas? ¿Qué materiales y espesores?** Para activarla: `MD_LASER = true` en `amedida/js/main.js`. |

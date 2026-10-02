@@ -15,6 +15,10 @@ const CZ_TIPOS = [
   { v:'Reja',                i:'M4 4v16M9 4v16M15 4v16M20 4v16M4 9h16M4 15h16' },
   { v:'Barandas o pasamanos', i:'M3 17L21 7M6 19v-6M11 16v-6M16 13v-6' },
   { v:'Decoración',          i:'M12 3v4M12 21v-4M8 7h8l-1.5 6h-5L8 7zM10 17h4' },
+  { v:'Muebles',             i:'M7 3v18M7 7h5M7 13h10M17 13v8' },
+  { v:'Lámparas',            i:'M12 3v6M12 9c-4 0-7 2-7 6M12 9c4 0 7 2 7 6M5 15v1M19 15v1M12 9v7M12 16v4M9 20h6' },
+  { v:'Escaleras',           i:'M3 20h4v-4h4v-4h4V8h4V4' },
+  { v:'Chimeneas',           i:'M4 4h16v17H4zM3 8h18M8 21v-6a4 4 0 018 0v6' },
   { v:'Otro proyecto',       i:'M12 5v14M5 12h14' }
 ];
 
@@ -23,7 +27,9 @@ const CZ_TIPOS = [
    main.js; solo cambia lo que se muestra en pantalla. */
 const CZ_TIPO_EN = {
   'Portón':'Gate', 'Puerta principal':'Front door', 'Reja':'Window bars',
-  'Barandas o pasamanos':'Railings or handrails', 'Decoración':'Decor', 'Otro proyecto':'Other project'
+  'Barandas o pasamanos':'Railings or handrails', 'Decoración':'Decor',
+  'Muebles':'Furniture', 'Lámparas':'Lamps', 'Escaleras':'Stairs', 'Chimeneas':'Fireplaces',
+  'Otro proyecto':'Other project'
 };
 function czTipoTx(v){ return (idioma === 'en' && CZ_TIPO_EN[v]) ? CZ_TIPO_EN[v] : v; }
 

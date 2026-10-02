@@ -2,21 +2,30 @@
 """
 Genera las dos piezas descargables de Metales Decorados:
 
-  1. Catalogo-Metales-Decorados.pdf   7 paginas, para mandar por WhatsApp
+  1. Catalogo-Metales-Decorados.pdf   11 paginas, para mandar por WhatsApp
   2. Tarjeta-Resenas.pdf              media carta, para imprimir y entregar
 
 Uso:
-    python herramientas/generar-pdf.py
+    python herramientas/generar-pdf.py             # genera las dos piezas
+    python herramientas/generar-pdf.py catalogo    # solo el catalogo
+    python herramientas/generar-pdf.py tarjeta     # solo la tarjeta de resenas
 
 Cuando el cliente cree su perfil de Google Business, poner el enlace en
 URL_RESENA (abajo) y volver a correr el script. Los QR se regeneran solos.
 
 Requiere: segno  (pip install segno)  y  Google Chrome instalado.
+Opcional: pillow  (pip install pillow)  para aligerar las fotos dentro del PDF.
 """
 
 import io, os, base64, subprocess, shutil, sys, tempfile, time
 import urllib.parse
+from functools import lru_cache
 import segno
+
+try:
+    from PIL import Image
+except ImportError:      # sin Pillow las fotos se incrustan tal cual (el PDF pesa mas)
+    Image = None
 
 # ==========================================================================
 #  CONFIGURACION — lo unico que hay que tocar
@@ -89,6 +98,38 @@ PAGINAS = [
         'fotos': ['proyecto-09-a.jpg'],
         'grande': True,
     },
+    {
+        'cat': 'Muebles',
+        'titulo': 'Muebles',
+        'texto': 'Juegos de comedor y de sala, mesas, bancas y camas, pensados '
+                 'para el espacio y el estilo de cada proyecto.',
+        'fotos': ['proyecto-49-a.jpg', 'proyecto-44-a.jpg',
+                  'proyecto-38-a.jpg', 'proyecto-37-a.jpg'],
+    },
+    {
+        'cat': 'Lámparas',
+        'titulo': 'Lámparas',
+        'texto': 'Lámparas colgantes y faroles de pared y de poste, para '
+                 'salones, corredores y accesos.',
+        'fotos': ['proyecto-43-a.jpg', 'proyecto-24-a.jpg',
+                  'proyecto-25-a.jpg', 'proyecto-31-a.jpg'],
+    },
+    {
+        'cat': 'Escaleras',
+        'titulo': 'Escaleras',
+        'texto': 'Escaleras de caracol y escaleras de peldaños de madera sobre '
+                 'estructura metálica, para interiores y exteriores.',
+        'fotos': ['proyecto-33-a.jpg', 'proyecto-34-a.jpg',
+                  'proyecto-35-a.jpg', 'proyecto-36-a.jpg'],
+    },
+    {
+        'cat': 'Chimeneas',
+        'titulo': 'Chimeneas',
+        'texto': 'Puertas de chimenea con malla metálica y diseños calados, '
+                 'hechas para cada hogar.',
+        'fotos': ['proyecto-41-a.jpg', 'proyecto-46-a.jpg',
+                  'proyecto-47-a.jpg', 'proyecto-42-a.jpg'],
+    },
 ]
 
 
@@ -104,14 +145,30 @@ def qr_datauri(texto, escala=10, oscuro='#15181c', claro=None):
     return 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode()
 
 
+ANCHO_MAX_FOTO = 1400    # px; sobra para una foto de 3.5 a 7 pulgadas en el PDF
+
+
+@lru_cache(maxsize=None)
 def img_datauri(nombre):
-    """Incrusta la foto en el HTML para que el PDF no dependa de rutas."""
+    """Incrusta la foto en el HTML para que el PDF no dependa de rutas.
+    Con Pillow se reduce a ANCHO_MAX_FOTO px: el PDF queda mas liviano para mandarlo
+    por WhatsApp y se ve igual."""
     ruta = os.path.join(IMG, nombre)
     if not os.path.exists(ruta):
         print('   ! falta la foto:', nombre)
         return ''
-    with open(ruta, 'rb') as f:
-        return 'data:image/jpeg;base64,' + base64.b64encode(f.read()).decode()
+    if Image is not None:
+        with Image.open(ruta) as im:
+            im = im.convert('RGB')
+            if im.width > ANCHO_MAX_FOTO:
+                im = im.resize((ANCHO_MAX_FOTO, round(im.height * ANCHO_MAX_FOTO / im.width)), Image.LANCZOS)
+            buf = io.BytesIO()
+            im.save(buf, "JPEG", quality=85, optimize=True)
+        datos = buf.getvalue()
+    else:
+        with open(ruta, 'rb') as f:
+            datos = f.read()
+    return 'data:image/jpeg;base64,' + base64.b64encode(datos).decode()
 
 
 def buscar_chrome():
@@ -222,7 +279,8 @@ def construir_catalogo():
             '<p class="eyebrow">Portafolio de trabajos</p>'
             '<h1>Transformamos metal en proyectos hechos a tu medida</h1>'
             '<p class="sub">Portones · Puertas principales · Rejas · '
-            'Pasamanos · Decoración en metal</p>'
+            'Pasamanos · Decoración en metal · Muebles · Lámparas · '
+            'Escaleras · Chimeneas</p>'
           '</div>'
           '<div class="pie"><span>' + CIUDAD + ' · ' + PROVINCIA + '</span>'
           '<span>' + TELEFONO + '</span></div>'
@@ -321,13 +379,15 @@ def construir_catalogo():
     .cab h2{ font-size:20pt; margin:8px 0 9px; }
     .cab .txt{ margin:0; color:#b9bec5; font-size:9.5pt; line-height:1.55; max-width:5.4in; }
 
-    .rej{ display:grid; gap:0.13in; flex:1; }
-    .rej--4{ grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; }
-    .rej--2{ grid-template-columns:1fr 1fr; grid-template-rows:1fr; }
-    .rej--1{ grid-template-columns:1fr; grid-template-rows:1fr; }
-    .celda{ position:relative; overflow:hidden; border-radius:5px;
+    /* minmax(0,1fr) y la foto en posicion absoluta: una foto vertical no puede
+       empujar la rejilla fuera de la pagina ni tapar el numero de pagina */
+    .rej{ display:grid; gap:0.13in; flex:1; min-height:0; }
+    .rej--4{ grid-template-columns:1fr 1fr; grid-template-rows:minmax(0,1fr) minmax(0,1fr); }
+    .rej--2{ grid-template-columns:1fr 1fr; grid-template-rows:minmax(0,1fr); }
+    .rej--1{ grid-template-columns:1fr; grid-template-rows:minmax(0,1fr); }
+    .celda{ position:relative; overflow:hidden; border-radius:5px; min-height:0;
             border:1px solid #22262b; background:#1a1d21; }
-    .celda img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .celda img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
 
     .npag{ display:flex; justify-content:space-between; align-items:center;
       margin-top:0.28in; padding-top:11px; border-top:1px solid #1f2329;
@@ -444,12 +504,15 @@ if __name__ == '__main__':
 
     # Un HTML temporal por pieza, para que nunca se crucen
     tmp = os.path.join(RAIZ, 'herramientas', '_tmp-{}.html')
+    solo = sys.argv[1] if len(sys.argv) > 1 else 'todo'
 
     # El catalogo se guarda dentro del sitio para poder descargarlo desde la web
-    html_a_pdf(construir_catalogo(),
-               os.path.join(RAIZ, 'amedida', 'Catalogo-Metales-Decorados.pdf'),
-               tmp.format('catalogo'))
-    html_a_pdf(construir_tarjeta(),
-               os.path.join(RAIZ, 'Tarjeta-Resenas.pdf'), tmp.format('tarjeta'))
+    if solo in ('todo', 'catalogo'):
+        html_a_pdf(construir_catalogo(),
+                   os.path.join(RAIZ, 'amedida', 'Catalogo-Metales-Decorados.pdf'),
+                   tmp.format('catalogo'))
+    if solo in ('todo', 'tarjeta'):
+        html_a_pdf(construir_tarjeta(),
+                   os.path.join(RAIZ, 'Tarjeta-Resenas.pdf'), tmp.format('tarjeta'))
 
     print('Listo.')

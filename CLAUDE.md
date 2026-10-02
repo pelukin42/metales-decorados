@@ -75,15 +75,26 @@ anchos para ahorrar peso: ya se midió que a esos ajustes no se nota la diferenc
 
 Al abrir solo se ven las categorías (portada + cantidad). Las fotos de los proyectos aparecen
 al elegir una; no volver a poner una vista ni un botón "Todos" con todos los proyectos a la vez. Las portadas se
-eligen en `CAT_PORTADA` de `amedida/js/main.js`. Una categoría nueva va en `CATEGORIAS`,
-`CAT_LABEL_EN` y en el campo `cat` de sus proyectos.
+eligen en `CAT_PORTADA` de `amedida/js/main.js`.
+
+**Categoría nueva: tocar todos estos lugares** (si no, el sitio queda desactualizado):
+1. `amedida/js/main.js`: `CATEGORIAS`, `CAT_LABEL_EN`, `CAT_PORTADA`, `TIPO_POR_CAT`, el texto
+   `ftr*` en `I18N.en` y el campo `cat` de sus proyectos.
+2. `amedida/js/cotizador.js`: `CZ_TIPOS` (con ícono) y `CZ_TIPO_EN`.
+3. `amedida/js/chatbot.js`: la lista de `botQue()` y `BOT_TIPO_EN`.
+4. `amedida/index.html`: enlace en el pie (`data-cat` + `data-i18n`).
+5. `herramientas/generar-pdf.py`: una página en `PAGINAS` y `python herramientas/generar-pdf.py catalogo`.
+6. `python herramientas/optimizar-fotos.py` para sus fotos.
+
+Los textos de los proyectos describen solo lo que se ve: no afirmar material (hierro, forja,
+aluminio, lámina), ubicación ni fechas que el cliente no haya confirmado. Eso va en `PENDIENTE`.
 
 ## Banderas de servicios
 
 | Bandera | Estado | Dónde |
 |---|---|---|
 | Corte láser / CNC | `MD_LASER = false` | `amedida/js/main.js` ~línea 13 |
-| Mobiliario | Solo como categoría "Muebles" del catálogo | Falta activarlo como servicio (tarjeta, cotizador, asistente). El README documenta cómo. |
+| Mobiliario | Categoría "Muebles" (catálogo, cotizador, asistente, pie, PDF) | Falta la tarjeta de servicio en "Qué fabricamos". El README documenta cómo. |
 
 La evidencia del corte láser es fuerte (bio, hashtags, fotos del portafolio), pero
 **no se publica** hasta que el cliente confirme materiales y espesores.
@@ -100,7 +111,7 @@ fechas, confirmar disponibilidad o dar por aceptada una solicitud. Cuando no sab
 
 ```bash
 python -m http.server 5180        # o el preview "propuesta" de launch.json
-python herramientas/generar-pdf.py  # catálogo + tarjeta de reseñas
+python herramientas/generar-pdf.py  # catálogo + tarjeta de reseñas (o: ... catalogo / ... tarjeta)
 python herramientas/optimizar-fotos.py  # versiones livianas de las fotos (WebP)
 ```
 

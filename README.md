@@ -139,16 +139,15 @@ y a `CAT_LABEL_EN`, y sus proyectos a `PROYECTOS` con ese nombre en `cat`.
 ### Mobiliario: en el catálogo, todavía no como servicio
 
 Metales Decorados **sí ofrece mobiliario** (juegos de sala y comedor, mesas, bancos, camas). Ya hay
-una categoría **Muebles** en el catálogo con sus proyectos. Lo que sigue sin activarse es el servicio
-como tal (tarjeta en "Qué fabricamos", opción en el cotizador y en el asistente).
+una categoría **Muebles** en el catálogo con sus proyectos, y también está como opción en el cotizador,
+en el asistente, en el pie de página y en el catálogo en PDF (igual que Lámparas, Escaleras y
+Chimeneas). Lo que sigue sin activarse es la **tarjeta de servicio** en "Qué fabricamos".
 
-**Para activarlo del todo:**
+**Para activarla:**
 
 | Dónde | Qué hacer |
 |---|---|
-| `amedida/js/main.js` | Agregar el objeto `mobiliario` a `SERVICIOS` y `'Muebles'` a `TIPO_POR_CAT`. |
-| `amedida/js/cotizador.js` | Agregar `Mobiliario` y `Mesa` a `CZ_TIPOS`. |
-| `amedida/js/chatbot.js` | Agregar `'Mobiliario'` a las opciones de `botQue()`. |
+| `amedida/js/main.js` | Agregar el objeto `mobiliario` a `SERVICIOS`. |
 | `amedida/index.html` | Sumar `mobiliario` a los textos de `<title>`, `description`, el hero y el pie. |
 
 Necesita una foto `servicio-mobiliario.jpg` para la tarjeta de servicio.
@@ -158,14 +157,15 @@ Necesita una foto `servicio-mobiliario.jpg` para la tarjeta de servicio.
 ## Piezas descargables (valor agregado del Plan A Medida)
 
 ```bash
-python herramientas/generar-pdf.py
+python herramientas/generar-pdf.py             # las dos piezas
+python herramientas/generar-pdf.py catalogo    # solo el catálogo
 ```
 
 Genera dos archivos a partir de las mismas fotos del sitio:
 
 | Archivo | Para qué |
 |---|---|
-| `amedida/Catalogo-Metales-Decorados.pdf` | 7 páginas. Se descarga desde el catálogo del sitio y se manda por WhatsApp. Última página con QR que abre el chat con el mensaje ya escrito. |
+| `amedida/Catalogo-Metales-Decorados.pdf` | 11 páginas. Se descarga desde el catálogo del sitio y se manda por WhatsApp. Última página con QR que abre el chat con el mensaje ya escrito. |
 | `Tarjeta-Resenas.pdf` | Media carta. Se imprime y se entrega con cada trabajo, con el QR de reseña grande. |
 
 ### El QR de reseñas está pendiente
