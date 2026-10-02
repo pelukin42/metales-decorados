@@ -139,10 +139,10 @@ function pintarServicios(){
    reales de Metales Decorados. Los campos marcados como PENDIENTE no se
    inventan: se confirman con el cliente antes de publicar.
    ========================================================================== */
-const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles','Lámparas'];
+const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles','Lámparas','Escaleras'];
 const CAT_LABEL_EN = {
   'Todos':'All', 'Portones':'Gates', 'Puertas':'Front doors',
-  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture', 'Lámparas':'Lamps'
+  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture', 'Lámparas':'Lamps', 'Escaleras':'Stairs'
 };
 function catLabel(c){ return t(c, CAT_LABEL_EN[c]); }
 
@@ -396,6 +396,38 @@ const PROYECTOS = [
     fotos:['proyecto-32-a.jpg'],
     en:{ titulo:'Post lantern on a stone column',
       resumen:'Lantern in black iron with frosted glass, mounted on the stone column of an entrance.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p33', cat:'Escaleras',  titulo:'Escalera de caracol con baranda de forja',
+    resumen:'Escalera de caracol de peldaños oscuros con baranda ornamental de forja, con balaustres torneados y volutas.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-33-a.jpg'],
+    en:{ titulo:'Spiral staircase with wrought iron railing',
+      resumen:'Spiral staircase with dark treads and an ornamental wrought iron railing, with twisted balusters and scrolls.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p34', cat:'Escaleras',  titulo:'Escalera de peldaños de madera sobre estructura metálica',
+    resumen:'Escalera interna con peldaños de madera maciza sobre una viga metálica central, con tramo en L.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-34-a.jpg'],
+    en:{ titulo:'Wood-tread staircase on a metal structure',
+      resumen:'Interior staircase with solid wood treads on a central metal beam, with an L-shaped flight.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p35', cat:'Escaleras',  titulo:'Escalera de caracol exterior con balaustres de rombo',
+    resumen:'Escalera de caracol exterior en hierro oscuro, con balaustres con detalle de rombo y pasamanos continuo.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-35-a.jpg'],
+    en:{ titulo:'Exterior spiral staircase with diamond balusters',
+      resumen:'Exterior spiral staircase in dark iron, with diamond-detail balusters and a continuous handrail.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p36', cat:'Escaleras',  titulo:'Escalera de caracol con peldaños de lámina',
+    resumen:'Escalera de caracol exterior con peldaños de lámina con relieve, baranda de tubo y pasamanos continuo, en acabado plateado.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-36-a.jpg'],
+    en:{ titulo:'Spiral staircase with plate treads',
+      resumen:'Exterior spiral staircase with textured plate treads, tube railing and a continuous handrail, in a silver finish.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
