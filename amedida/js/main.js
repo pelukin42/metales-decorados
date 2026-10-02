@@ -139,10 +139,10 @@ function pintarServicios(){
    reales de Metales Decorados. Los campos marcados como PENDIENTE no se
    inventan: se confirman con el cliente antes de publicar.
    ========================================================================== */
-const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración'];
+const CATEGORIAS = ['Todos','Portones','Puertas','Rejas','Barandas','Decoración','Muebles'];
 const CAT_LABEL_EN = {
   'Todos':'All', 'Portones':'Gates', 'Puertas':'Front doors',
-  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor'
+  'Rejas':'Window bars', 'Barandas':'Railings', 'Decoración':'Decor', 'Muebles':'Furniture'
 };
 function catLabel(c){ return t(c, CAT_LABEL_EN[c]); }
 
@@ -276,6 +276,46 @@ const PROYECTOS = [
     fotos:['proyecto-17-a.jpg'],
     en:{ titulo:'Stair railing, full view',
       resumen:'Curved forged stair railing, with ornamental finials on each section.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p18', cat:'Muebles',    titulo:'Comedor redondo con cuatro sillas',
+    resumen:'Juego de comedor en hierro con mesa redonda y cuatro sillas de espaldar calado y asiento tejido, con detalles dorados.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'Taller, Guadalupe',
+    fotos:['proyecto-18-a.jpg'],
+    en:{ titulo:'Round dining set with four chairs',
+      resumen:'Iron dining set with a round table and four chairs with slatted backs and woven seats, with gold-toned details.',
+      tipo:'Custom fabrication', ubicacion:'Workshop, Guadalupe' } },
+
+  { id:'p19', cat:'Muebles',    titulo:'Juego de mesa y sillas en blanco con forja decorativa',
+    resumen:'Mesa redonda y cuatro sillas en hierro pintado de blanco, con espaldares y base de forja decorativa.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'Taller, Guadalupe',
+    fotos:['proyecto-19-a.jpg'],
+    en:{ titulo:'White table and chairs set with decorative scrollwork',
+      resumen:'Round table and four chairs in white-painted iron, with decorative scrollwork on the backs and base.',
+      tipo:'Custom fabrication', ubicacion:'Workshop, Guadalupe' } },
+
+  { id:'p20', cat:'Muebles',    titulo:'Comedor redondo de terraza con sillas de asiento tejido',
+    resumen:'Mesa redonda con tapa de acabado granulado y sillas de espaldar de franjas y asiento tejido, en una terraza.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-20-a.jpg'],
+    en:{ titulo:'Round patio dining set with woven-seat chairs',
+      resumen:'Round table with a speckled top and chairs with slatted backs and woven seats, on a patio.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p21', cat:'Muebles',    titulo:'Comedor ovalado con sillas de forja y asiento tapizado',
+    resumen:'Mesa ovalada con tapa de vidrio oscuro y sillas con brazos de forja y asiento tapizado.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-21-a.jpg'],
+    en:{ titulo:'Oval dining set with scrolled iron chairs and upholstered seats',
+      resumen:'Oval table with a dark glass top and armchairs in scrolled ironwork with upholstered seats.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p22', cat:'Muebles',    titulo:'Mesa rectangular de vidrio con sillas en hierro',
+    resumen:'Mesa rectangular con tapa de vidrio sobre base curva de hierro, con sillas de respaldo cuadriculado.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-22-a.jpg'],
+    en:{ titulo:'Rectangular glass-top table with iron chairs',
+      resumen:'Rectangular table with a glass top on a curved iron base, with grid-back chairs.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
