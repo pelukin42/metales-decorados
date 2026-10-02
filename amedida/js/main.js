@@ -476,6 +476,46 @@ const PROYECTOS = [
     fotos:['proyecto-42-a.jpg'],
     en:{ titulo:'Fireplace doors with mesh and hammered finish',
       resumen:'Arched double doors for a fireplace, with a hammered frame, rivets, metal mesh and forged handles.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p43', cat:'Lámparas',   titulo:'Lámpara colgante de tres niveles con aros y portavelas',
+    resumen:'Lámpara colgante de gran formato en hierro forjado, con tres niveles de aros calados, cadenas y brazos con portavelas, bajo un techo de madera.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-43-a.jpg'],
+    en:{ titulo:'Three-tier pendant light with rings and candle holders',
+      resumen:'Large-format wrought iron pendant light with three tiers of patterned rings, chains and candle-holder arms, under a wood ceiling.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p44', cat:'Muebles',    titulo:'Mesa de comedor de madera con base metálica y sillas',
+    resumen:'Mesa rectangular con tapa de madera barnizada sobre base metálica, y sillas de espaldar en equis con asiento de madera.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-44-a.jpg'],
+    en:{ titulo:'Wood dining table with metal base and chairs',
+      resumen:'Rectangular table with a varnished wood top on a metal base, and chairs with cross-back frames and wood seats.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p45', cat:'Puertas',    titulo:'Puerta doble en arco con vidrio texturizado',
+    resumen:'Puerta doble de marco metálico con remate en arco y vidrio texturizado dividido en cuadros, con paneles lisos en la parte baja.',
+    tipo:'Fabricación a medida', material:'Hierro y vidrio', ubicacion:'PENDIENTE',
+    fotos:['proyecto-45-a.jpg'],
+    en:{ titulo:'Arched double door with textured glass',
+      resumen:'Double door with a metal frame and arched top, textured glass divided into panes, and plain panels on the lower part.',
+      tipo:'Custom fabrication', material:'Iron and glass' } },
+
+  { id:'p46', cat:'Chimeneas',  titulo:'Puertas de chimenea con malla y volutas de forja',
+    resumen:'Puertas dobles de chimenea con remate en arco, malla metálica y diseño de volutas en forja, sobre pared de ladrillo.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-46-a.jpg'],
+    en:{ titulo:'Fireplace doors with mesh and wrought iron scrolls',
+      resumen:'Arched double fireplace doors with metal mesh and a wrought iron scroll design, on a brick wall.',
+      tipo:'Custom fabrication' } },
+
+  { id:'p47', cat:'Chimeneas',  titulo:'Puertas de chimenea con diseño de mariposa en forja',
+    resumen:'Puertas dobles para chimenea con diseño simétrico de volutas en forma de mariposa y manijas de forja, bajo repisa de piedra.',
+    tipo:'Fabricación a medida', material:'PENDIENTE', ubicacion:'PENDIENTE',
+    fotos:['proyecto-47-a.jpg'],
+    en:{ titulo:'Fireplace doors with wrought iron butterfly design',
+      resumen:'Double fireplace doors with a symmetrical butterfly-shaped scroll design and forged handles, under a stone mantel.',
       tipo:'Custom fabrication' } }
 ];
 function pCampo(p, campo){
